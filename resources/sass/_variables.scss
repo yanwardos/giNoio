@@ -1,0 +1,32 @@
+// Body
+$body-bg: #9ADE7B;
+// Typography
+$font-family-sans-serif: 'Noto Sans', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+/*
+#FF8F8F
+#EEF296 secondary
+#9ADE7B bgcolor
+#508D69 dark
+
+#FFB534
+#FBF6EE
+#C1F2B0 light
+#65B741 primary
+
+
+*/
+
+// color
+$theme-colors: (
+  "primary":    #65B741,
+  "secondary":  #EEF296,
+//   "success":    $success,
+//   "info":       $info,
+//   "warning":    $warning,
+//   "danger":     $danger,
+    "light":      #C1F2B0,
+    "dark":       #508D69
+);
