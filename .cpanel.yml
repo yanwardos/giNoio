@@ -1,5 +1,5 @@
 ---
 deployment:
-  tasks:
-    - composer install
-    - php artisan migrate
+      tasks:
+        - composer install
+        - php artisan migrate
