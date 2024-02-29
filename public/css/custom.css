@@ -8,13 +8,29 @@
 #FBF6EE
 #C1F2B0
 #65B741
-
-
 */
-.card-login {
-    /* max-width: 640px; */
-    /* background-color: #508d69;
+.content-home {
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+}
+.content-service-header {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    font-weight: 800;
+}
 
-    border-radius: 3rem;
-    border: 0; */
+.content-service-container {
+    margin-top: 1.5rem;
+
+    gap: 2rem;
+}
+
+.content-service {
+    padding: 1rem;
+    box-shadow: 3px 3px 5px 0px black;
+}
+
+.content-service > img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 }

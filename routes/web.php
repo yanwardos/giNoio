@@ -25,7 +25,7 @@ Route::get('/welcome', function () {
 # TODO: Welcome
 Route::get('/', function () {
     return view('landing');
-});
+})->name('landing');
 
 Route::get('/services', function () {
     return view('services');

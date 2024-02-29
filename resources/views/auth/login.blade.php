@@ -6,14 +6,15 @@
         <div class="container">
             <div class="row justify-content-center align-items-center vh-100">
                 <div class="col-8 col-md-8 col-lg-6 col-xl-4">
-                    <div class="card p-3 card-login bg-dark text-light">
+                    <div class="card p-3 card-login bg-dark text-light shadow">
                         <div class="card-body px-4 py-3">
-                            <div class="card-title d-flex flex-column justify-content-center mb-2">
+                            <a href="{{ route('landing') }}"
+                                class="text-decoration-none card-title d-flex flex-column justify-content-center mb-2">
                                 <img class="img-fluid" style="height: 100px;" src="{{ asset('assets/img/brain.svg') }}"
                                     alt="Goniometer Logo">
-                                <strong class="text-center h2 pt-2 pb-0">Goniometer</strong>
+                                <strong class="text-center fw-bold h2 pt-2 pb-0">Goniometer</strong>
                                 <hr class="m-0 p-0">
-                            </div>
+                            </a>
 
                             <form method="POST" action="{{ route('login') }}">
                                 @csrf

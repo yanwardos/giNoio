@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -89,7 +90,7 @@
             </div>
         </nav>
 
-        <main class="py-4 d-flex vh-100 flex-column justify-content-center">
+        <main class="py-4 ">
             @yield('content')
         </main>
     </div>
