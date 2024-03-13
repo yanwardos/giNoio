@@ -71,9 +71,23 @@
                             </a>
                         </li>
                     @endif
-                    
+
                 @endguest
             </ul>
+            <hr>
+            @auth
+                <a class="btn btn-primary" href="{{ route('logout') }}"
+                    onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+                    <i class="fa fa-sign-out"></i>
+                    {{ __('Logout') }}
+                </a>
+
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+
+            @endauth
         </div>
         <div class="w-100 d-flex flex-column">
             <div class="bg-dark py-3 px-4 d-flex justify-content-between align-items-center">
