@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-xl navbar-dark bg-dark shadow-sm " style="position: sticky; top: 0;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"

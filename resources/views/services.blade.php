@@ -1,2 +1,0 @@
-# TODO: service page
-servis

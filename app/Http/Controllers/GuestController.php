@@ -9,4 +9,9 @@ class GuestController extends Controller
     public function index()
     {
     }
+
+    public function dashboard()
+    {
+        return redirect(auth()->user()->role);
+    }
 }

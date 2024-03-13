@@ -22,6 +22,7 @@
             </p>
         </div>
     </div>
+    {{-- TODO: tambahin Service --}}
     <div class="container vh-100 d-flex flex-column justify-content-center align-items-stretch" id="service">
         <h1 class="content-service-header">Layanan</h1>
         <div class="content-service-container hw-100 d-flex flex-column flex-md-row">
@@ -41,6 +42,7 @@
             </div>
         </div>
     </div>
+    {{-- TODO: kontak --}}
     <div class="container vh-100 d-flex flex-column justify-content-center align-items-stretch" id="contact">
         <h1 class="content-service-header">Hubungi Kami</h1>
         <p>Untuk informasi lebih lanjut, silakan menghubungi kami lewat media komunikasi berikut.</p>
