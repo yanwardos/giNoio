@@ -51,5 +51,13 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password'),
             'role_id' => 2
         ]);
+
+        // pasien
+        DB::table('users')->insert([
+            'name' => 'Pasien Sakit',
+            'email' => 'pasien@localhost.com',
+            'password' => Hash::make('password'),
+            'role_id' => 3
+        ]);
     }
 }
