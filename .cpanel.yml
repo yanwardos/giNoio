@@ -1,7 +1,8 @@
 ---
 deployment:
       tasks:
-        - composer install
-        - cd /home/yanwardo/igoniometer.my.id && php artisan db:wipe
-        - cd /home/yanwardo/igoniometer.my.id && php artisan migrate
-        - cd /home/yanwardo/igoniometer.my.id && php artisan db:seed
+        - export DEPLOYPATH=/home/yanwardo/igoniometer.my.id
+        - cd $DEPLOYPATH
+        - php artisan db:wipe
+        - php artisan migrate
+        - php artisan db:seed
