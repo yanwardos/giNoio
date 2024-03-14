@@ -26,6 +26,8 @@
     <!-- DataTables -->
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css">
 
+
+
 </head>
 
 <body>
@@ -49,18 +51,17 @@
                 @guest
                 @else
                     @if (Auth::user()->hasRole('medis'))
-                        <li>
+                        <li class="nav-item">
                             <a href="{{ route('medis.dashboard') }}"
                                 class="nav-link text-black {{ Route::is('medis.dashboard') ? 'active' : '' }}">
-                                <i class="me-4 fa fa-dashboard"></i>
+                                <i class=" me-4 nav-icon e-4 fa fa-dashboard"></i>
                                 Dashboard
                             </a>
                         </li>
                         <li>
                             <a href="{{ route('medis.pasienList') }}"
                                 class="nav-link text-black {{ Route::is('medis.pasienList') ? 'active' : '' }}">
-                                <i class="me-4 fa fa-users"></i>
-                                Pasien
+                                <i class="me-4 fa fa-users"></i>Pasien
                             </a>
                         </li>
                         <li>
@@ -108,8 +109,6 @@
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="http://cdn.datatables.net/2.0.2/js/dataTables.min.js"></script>
     @yield('script')
 </body>
 

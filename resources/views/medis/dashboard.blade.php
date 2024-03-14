@@ -1,10 +1,10 @@
-@extends('layouts.app-sidebar')
+@extends('layouts.adminlte-sidebar')
 
 @section('page-title')
     Dashboard
 @endsection
 
-@section('content')
+@section('main-content')
     <div class="d-flex p-2">
         <div class="card text-center">
             <div class="card-body">

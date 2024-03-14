@@ -60,9 +60,13 @@ Route::middleware(['auth', 'role:pasien'])->prefix('pasien')->group(function () 
 // medis
 Route::middleware(['auth', 'role:medis'])->prefix('medis')->group(function () {
     Route::get('/', [MedisController::class, 'index'])->name('medis.dashboard');
-    Route::get('/pasien/list', [MedisController::class, 'pasienList'])->name('medis.pasienList');
+    Route::get('/pasiens', [MedisController::class, 'pasienList'])->name('medis.pasienList');
     Route::get('/pasien/create', [MedisController::class, 'createPasien'])->name('medis.pasienCreate');
     Route::post('/pasien/store', [MedisController::class, 'storePasien'])->name('medis.pasienStore');
 
-    Route::get('/riwayat/list', [MedisController::class, 'riwayatList'])->name('medis.riwayatList');
+    Route::get('/records', [MedisController::class, 'riwayatList'])->name('medis.riwayatList');
+});
+
+Route::get('adminlte', function () {
+    return view('layouts.adminlte-sidebar');
 });
