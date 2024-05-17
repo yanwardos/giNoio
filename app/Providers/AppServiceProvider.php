@@ -6,6 +6,8 @@ use Illuminate\Database\Schema\Builder;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
+use Illuminate\Support\Facades\Blade;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -26,5 +28,17 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        Blade::if('medis', function () {
+            return auth()->user()->hasRole('medis');
+        });
+
+        Blade::if('admin', function () {
+            return auth()->user()->hasRole('admin');
+        });
+
+        Blade::if('pasien', function () {
+            return auth()->user()->hasRole('pasien');
+        });
     }
 }

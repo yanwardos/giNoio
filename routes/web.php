@@ -53,8 +53,8 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 
 // Pasien
 Route::middleware(['auth', 'role:pasien'])->prefix('pasien')->group(function () {
-    Route::get('/', [PasienController::class], 'index')->name('pasien.dashboard');
-    Route::get('/grafik', [PasienController::class], 'teraphyHistory')->name('pasien.teraphyHistory');
+    Route::get('/', [PasienController::class, 'index'])->name('pasien.dashboard');
+    Route::get('/grafik', [PasienController::class, 'teraphyHistory'])->name('pasien.teraphyHistory');
 });
 
 // medis

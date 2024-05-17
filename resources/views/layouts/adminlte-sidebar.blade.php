@@ -8,7 +8,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('page-title') - {{ config('app.name', 'Laravel') }}</title>
+    <title>
+        @yield('page-title') - {{ config('app.name', 'Laravel') }}
+    </title>
 
     <!-- Scripts -->
     {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
@@ -105,7 +107,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-light-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="index3.html" class="brand-link">
+            <a href="#" class="brand-link">
                 <svg class="mx-2 brand-image-xl" fill="#1f2d3d" width="50px" height="50px" viewBox="0 0 100 100"
                     id="Layer_1" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
                     xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -134,7 +136,8 @@
                         </div>
                     </div>
 
-                @endauth
+                @endauth 
+ 
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
@@ -142,45 +145,67 @@
                         data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
                    with font-awesome or any other icon font library -->
-                        <li class="nav-item menu-open">
-                            <a href="{{ route('medis.dashboard') }}"
-                                class="nav-link {{ Route::is('medis.dashboard') ? 'active' : '' }}">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Dashboard
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-header">PASIEN</li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Route::is('medis.pasienList') ? 'active' : '' }}"
-                                href="{{ route('medis.pasienList') }}">
-                                <i class="fas fa-users nav-icon"></i>
-                                <p>Seluruh Pasien</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Route::is(' ') ? 'active' : '' }}"
-                                href="{{ route('medis.pasienList') }}">
-                                <i class="fas fa-plus nav-icon"></i>
-                                <p>Daftarkan Pasien</p>
-                            </a>
-                        </li>
-                        <li class="nav-header">REKAM MEDIS</li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Route::is('medis.riwayatList') ? 'active' : '' }}"
-                                href="{{ route('medis.riwayatList') }}">
-                                <i class="fas fa-history nav-icon"></i>
-                                <p>Riwayat</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Route::is(' ') ? 'active' : '' }}" href="#">
-                                <i class="far fa-history nav-icon"></i>
-                                <p>Rekam</p>
-                            </a>
-                        </li>
 
+                        @medis
+                            <li class="nav-item menu-open">
+                                <a href="{{ route('medis.dashboard') }}"
+                                    class="nav-link {{ Route::is('medis.dashboard') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Dashboard
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-header">PASIEN</li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Route::is('medis.pasienList') ? 'active' : '' }}"
+                                    href="{{ route('medis.pasienList') }}">
+                                    <i class="fas fa-users nav-icon"></i>
+                                    <p>Seluruh Pasien</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Route::is(' ') ? 'active' : '' }}"
+                                    href="{{ route('medis.pasienList') }}">
+                                    <i class="fas fa-plus nav-icon"></i>
+                                    <p>Daftarkan Pasien</p>
+                                </a>
+                            </li>
+                            <li class="nav-header">REKAM MEDIS</li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Route::is('medis.riwayatList') ? 'active' : '' }}"
+                                    href="{{ route('medis.riwayatList') }}">
+                                    <i class="fas fa-history nav-icon"></i>
+                                    <p>Riwayat</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Route::is(' ') ? 'active' : '' }}" href="#">
+                                    <i class="far fa-history nav-icon"></i>
+                                    <p>Rekam</p>
+                                </a>
+                            </li>
+                        @endmedis
+                        
+                        @pasien
+                            <li class="nav-item menu-open">
+                                <a href="{{ route('pasien.dashboard') }}"
+                                    class="nav-link {{ Route::is('pasien.dashboard') ? 'active' : '' }}">
+                                    <i class="nav-icon fas fa-tachometer-alt"></i>
+                                    <p>
+                                        Dashboard
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{ Route::is('pasien.teraphyHistory') ? 'active' : '' }}"
+                                    href="{{ route('pasien.teraphyHistory') }}">
+                                    <i class="fas fa-history nav-icon"></i>
+                                    <p>Riwayat terapi</p>
+                                </a>
+                            </li> 
+                        @endpasien
+ 
                         <li class="nav-header">SISTEM</li>
                         @auth
                             <li class="nav-item">
