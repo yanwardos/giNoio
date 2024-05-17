@@ -6,4 +6,4 @@ deployment:
         - php artisan db:wipe
         - php artisan migrate
         - php artisan db:seed
-        - npm run 
+        - npm run build-adminlte
