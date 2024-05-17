@@ -66,7 +66,7 @@
                     <article class="card bg-gray-light">
                         <div class="card-header">
                             <div class="card-title">
-                                <span class="h6">eaas;dlfk</span>
+                                <span class="h6">Lorem, ipsum.</span>
                             </div>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -85,7 +85,7 @@
                     <article class="card bg-gray-light">
                         <div class="card-header">
                             <div class="card-title">
-                                <span class="h6">eaas;dlfk</span>
+                                <span class="h6">Informasi</span>
                             </div>
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -95,7 +95,7 @@
                         </div>
                         <div class="card-body">
                             <div>
-                                aasdfasdf
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis sed veritatis excepturi molestias recusandae, cupiditate consectetur esse laudantium maiores ratione.
                             </div>
                         </div>
                     </article>
