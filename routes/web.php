@@ -1,9 +1,13 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\ChangePasswordController;
-use App\Http\Controllers\MedisController;
-use App\Http\Controllers\PasienController;
+use App\Http\Controllers\Web\AdminController;
+use App\Http\Controllers\Web\MedisController;
+use App\Http\Controllers\Web\ChangePasswordController; 
+use App\Http\Controllers\Web\PasienController;
+use App\Models\Admin;
+use App\Models\Device;
+use App\Models\Medis;
+use App\Models\Pasien;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,7 +44,7 @@ Route::get('/contact', function () {
 })->name('contact');
 
 // Route::get('/login', [LoginController::class, 'index'])->name('login');
-Route::get('/changepassword', [ChangePasswordController::class, 'index'])->name('changePassword');
+// Route::get('/changepassword', [ChangePasswordController::class, 'index'])->name('changePassword');
 
 Route::middleware('auth')->get('dashboard', function () {
     return redirect(auth()->user()->roles->name);
@@ -60,13 +64,48 @@ Route::middleware(['auth', 'role:pasien'])->prefix('pasien')->group(function () 
 // medis
 Route::middleware(['auth', 'role:medis'])->prefix('medis')->group(function () {
     Route::get('/', [MedisController::class, 'index'])->name('medis.dashboard');
+
+    
+    Route::get('/pasien/new', [MedisController::class, 'newPasien'])->name('medis.pasienNew');
+    Route::post('/pasien/create', [MedisController::class, 'createPasien'])->name('medis.pasienCreate');
+
     Route::get('/pasiens', [MedisController::class, 'pasienList'])->name('medis.pasienList');
-    Route::get('/pasien/create', [MedisController::class, 'createPasien'])->name('medis.pasienCreate');
-    Route::post('/pasien/store', [MedisController::class, 'storePasien'])->name('medis.pasienStore');
+    Route::get('/pasien/{pasien}', [MedisController::class, 'showPasien'])->name('medis.pasienShow');
+
+    Route::get('/pasien/{pasien}/edit', [MedisController::class, 'editPasien'])->name('medis.pasienEdit');
+    Route::post('/pasien/{pasien}/update', [MedisController::class, 'updatePasien'])->name('medis.pasienUpdate');
+
+    Route::post('/pasien/{pasien}/delete', [MedisController::class, 'deletePasien'])->name('medis.pasienDelete');
+
+    Route::post('/pasien/{pasien}/passwordReset', [MedisController::class, 'resetPassword'])->name('medis.pasienPasswordReset');
 
     Route::get('/records', [MedisController::class, 'riwayatList'])->name('medis.riwayatList');
 });
 
+
+// DEVELOPMENT HELPERS
 Route::get('adminlte', function () {
     return view('layouts.adminlte-sidebar');
+});
+
+Route::get('vars', function () {
+    dump("ADMINS");
+    foreach (Admin::get() as $admin) {
+        dump($admin->user->attributesToArray());
+    }
+
+    dump("MEDIS");
+    foreach (Medis::get() as $medis) {
+        dump($medis->user->attributesToArray());
+    }
+
+    dump("PASIENS");
+    foreach (Pasien::get() as $pasien) {
+        dump($pasien->user->attributesToArray());
+    }
+    
+    dump("DEVICES");
+    foreach (Device::get() as $device) {
+        dump($device->attributesToArray());
+    }
 });

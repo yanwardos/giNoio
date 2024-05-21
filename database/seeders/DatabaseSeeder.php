@@ -2,6 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Enum\RoleEnum;
+use App\Models\Admin;
+use App\Models\Device;
+use App\Models\Medis;
+use App\Models\Pasien;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -22,42 +28,38 @@ class DatabaseSeeder extends Seeder
         DB::table('roles')->insert(
             [
                 [
-                    'id' => 1,
+                    'id' => RoleEnum::ADMIN->value,
                     'name' => 'admin'
                 ],
                 [
-                    'id' => 2,
+                    'id' => RoleEnum::MEDIS->value,
                     'name' => 'medis'
                 ],
                 [
-                    'id' => 3,
+                    'id' => RoleEnum::PASIEN->value,
                     'name' => 'pasien'
                 ]
             ]
         );
-
+        
         // admin
-        DB::table('users')->insert([
-            'name' => 'Admin',
-            'email' => 'admin@localhost.com',
-            'password' => Hash::make('password'),
-            'role_id' => 1
-        ]);
+        Admin::factory()
+        ->count(1)
+        ->create();
 
         // medis
-        DB::table('users')->insert([
-            'name' => 'dr. Medis',
-            'email' => 'medis@localhost.com',
-            'password' => Hash::make('password'),
-            'role_id' => 2
-        ]);
+        Medis::factory()
+        ->count(1)
+        ->create();
 
         // pasien
-        DB::table('users')->insert([
-            'name' => 'Pasien Sakit',
-            'email' => 'pasien@localhost.com',
-            'password' => Hash::make('password'),
-            'role_id' => 3
-        ]);
+        Pasien::factory()
+        ->count(2) 
+        ->create();
+
+        // device
+        Device::factory()
+        ->count(2)
+        ->create();
     }
 }

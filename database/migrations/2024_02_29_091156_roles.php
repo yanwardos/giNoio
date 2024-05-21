@@ -31,7 +31,7 @@ class Roles extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign('role_id');
+            $table->dropConstrainedForeignId('role_id');
         });
 
         Schema::dropIfExists('roles');

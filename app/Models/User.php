@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\RoleEnum;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -23,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id', 
     ];
 
     /**
@@ -33,6 +35,7 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'role_id',
     ];
 
     /**
@@ -41,8 +44,12 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'email_verified_at' => 'datetime', 
     ];
+
+    public function id(){
+        return $this->id;
+    }
 
     public function roles()
     {
@@ -52,5 +59,11 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         return $this->roles->name === $role;
+    }
+
+    public function getAvatar(){
+        if(!isset($this->avatar)) return "https://via.placeholder.com/350x450";
+        if(!is_null($this->avatar)) return "https://via.placeholder.com/350x450";
+        return $this->avatar;
     }
 }

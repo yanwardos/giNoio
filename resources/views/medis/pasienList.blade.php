@@ -32,20 +32,38 @@
                             <tr>
                                 <th class="col-1">No</th>
                                 <th class="col-4">Nama Pasien</th>
-                                <th class="col-2">Usia</th>
-                                <th class="col-2">Jenis Kelamin</th>
+                                <th class="col-2">Email</th>
+                                <th class="col-1">Usia</th>
+                                <th class="col-1">Jenis Kelamin</th>
                                 <th class="col-2">Aksi BB, Riwayat</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="col-1">Usia</td>
-                                <td class="col-4">Nama Pasien</td>
-                                <td class="col-2">Jenis Kelamin</td>
-                                <td class="col-2">Aksi BB, Riwayat</td>
-                                <td class="col-2">No</td>
-                            </tr>
+                            @php
+                                $num = 1;
+                            @endphp
+                            @if ($pasiens)
+                                @foreach ($pasiens as $pasien)
+                                <tr>
+                                    <td class="col-1">{{$num++}}</td>
+                                    <td class="col-4">{{$pasien->user->name}}</td>
+                                    <td class="col-2">{{$pasien->user->email}}</td>
+                                    <td class="col-1">{{$pasien->age()}}</td>
+                                    <td class="col-1">{{$pasien->gender?'Pria':'Wanita'}}</td>
+                                    <td class="col-2">
+                                        <a href="{{route('medis.pasienShow', $pasien)}}" class="btn btn-block btn-warning btn-xs">
+                                            <i class="fas fa-info"></i>
+                                            Detail
+                                        </a>
+                                        <a href="{{route('medis.pasienEdit', $pasien)}}" class="btn btn-block btn-info btn-xs">
+                                            <i class="fas fa-edit"></i>
+                                            Edit
+                                        </a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>

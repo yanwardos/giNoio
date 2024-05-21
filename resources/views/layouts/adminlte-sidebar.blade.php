@@ -158,15 +158,15 @@
                             </li>
                             <li class="nav-header">PASIEN</li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Route::is('medis.pasienList') ? 'active' : '' }}"
+                                <a class="nav-link {{ Route::is('medis.pasienList')||Route::is('medis.pasienShow')||Route::is('medis.pasienEdit') ? 'active' : '' }}"
                                     href="{{ route('medis.pasienList') }}">
                                     <i class="fas fa-users nav-icon"></i>
                                     <p>Seluruh Pasien</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Route::is(' ') ? 'active' : '' }}"
-                                    href="{{ route('medis.pasienList') }}">
+                                <a class="nav-link {{ Route::is('medis.pasienNew') ? 'active' : '' }}"
+                                    href="{{ route('medis.pasienNew') }}">
                                     <i class="fas fa-plus nav-icon"></i>
                                     <p>Daftarkan Pasien</p>
                                 </a>
@@ -236,6 +236,25 @@
             <!-- Content Header (Page header) -->
             <div class="content-header">
                 @yield('content-header')
+                <div class="container-fluid">
+                    <div class="row mb-2"> 
+                        @error('messageError')
+                            <div class="col-12 mt-3">
+                                <div class="alert alert-danger" role="alert">
+                                    {{$message}}
+                                </div>
+                            </div>
+                        @enderror
+                        @if(Session::has('messageSuccess'))
+                            <div class="col-12 mt-3">
+                                <div class="alert alert-success" role="alert">
+                                    {{Session::get('messageSuccess')}}
+                                </div>
+                            </div> 
+                        @endif
+                    </div><!-- /.row -->
+                    
+                </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
 
@@ -294,6 +313,14 @@
     <script src="{{ asset('js/demo.js') }}"></script>
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('js/pages/dashboard.js') }}"></script> --}}
+
+    <script>
+        $(window).on('load', function() {
+            setTimeout(()=>{
+                $('.alert').slideUp();
+            }, 2000);
+        });
+    </script>
 </body>
 
 </html>
