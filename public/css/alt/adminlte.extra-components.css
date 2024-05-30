@@ -851,7 +851,7 @@
 }
 
 .direct-chat-contacts-light {
-  background-color: #9ADE7B;
+  background-color: #90c082;
 }
 
 .direct-chat-contacts-light .contacts-list-name {
@@ -981,13 +981,13 @@
 }
 
 .direct-chat-light .right > .direct-chat-text {
-  background-color: #9ADE7B;
-  border-color: #9ADE7B;
+  background-color: #90c082;
+  border-color: #90c082;
   color: #1f2d3d;
 }
 
 .direct-chat-light .right > .direct-chat-text::after, .direct-chat-light .right > .direct-chat-text::before {
-  border-left-color: #9ADE7B;
+  border-left-color: #90c082;
 }
 
 .direct-chat-dark .right > .direct-chat-text {

@@ -789,11 +789,11 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 }
 
 .select2-light + .select2-container--default.select2-container--open .select2-selection--single {
-  border-color: #e8f8e1;
+  border-color: #dbebd7;
 }
 
 .select2-light + .select2-container--default.select2-container--focus .select2-selection--single {
-  border-color: #e8f8e1;
+  border-color: #dbebd7;
 }
 
 .select2-container--default .select2-light.select2-dropdown .select2-search__field:focus,
@@ -802,31 +802,31 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 .select2-light .select2-container--default.select2-dropdown .select2-search__field:focus,
 .select2-light .select2-container--default .select2-dropdown .select2-search__field:focus,
 .select2-light .select2-container--default .select2-search--inline .select2-search__field:focus {
-  border: 1px solid #e8f8e1;
+  border: 1px solid #dbebd7;
 }
 
 .select2-container--default .select2-light .select2-results__option--highlighted,
 .select2-light .select2-container--default .select2-results__option--highlighted {
-  background-color: #9ADE7B;
+  background-color: #90c082;
   color: #1f2d3d;
 }
 
 .select2-container--default .select2-light .select2-results__option--highlighted[aria-selected], .select2-container--default .select2-light .select2-results__option--highlighted[aria-selected]:hover,
 .select2-light .select2-container--default .select2-results__option--highlighted[aria-selected],
 .select2-light .select2-container--default .select2-results__option--highlighted[aria-selected]:hover {
-  background-color: #91db6f;
+  background-color: #87bb78;
   color: #1f2d3d;
 }
 
 .select2-container--default .select2-light .select2-selection--multiple:focus,
 .select2-light .select2-container--default .select2-selection--multiple:focus {
-  border-color: #e8f8e1;
+  border-color: #dbebd7;
 }
 
 .select2-container--default .select2-light .select2-selection--multiple .select2-selection__choice,
 .select2-light .select2-container--default .select2-selection--multiple .select2-selection__choice {
-  background-color: #9ADE7B;
-  border-color: #8ad967;
+  background-color: #90c082;
+  border-color: #81b771;
   color: #1f2d3d;
 }
 
@@ -842,7 +842,7 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 
 .select2-container--default .select2-light.select2-container--focus .select2-selection--multiple,
 .select2-light .select2-container--default.select2-container--focus .select2-selection--multiple {
-  border-color: #e8f8e1;
+  border-color: #dbebd7;
 }
 
 .select2-dark + .select2-container--default.select2-container--open .select2-selection--single {
@@ -3606,7 +3606,7 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 }
 
 .slider-light .slider .slider-selection {
-  background: #9ADE7B;
+  background: #90c082;
 }
 
 .slider-dark .slider .slider-selection {
@@ -3900,18 +3900,18 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 
 .icheck-light > input:first-child:not(:checked):not(:disabled):hover + label::before,
 .icheck-light > input:first-child:not(:checked):not(:disabled):hover + input[type="hidden"] + label::before {
-  border-color: #9ADE7B;
+  border-color: #90c082;
 }
 
 .icheck-light > input:first-child:not(:checked):not(:disabled):focus + label::before,
 .icheck-light > input:first-child:not(:checked):not(:disabled):focus + input[type="hidden"] + label::before {
-  border-color: #9ADE7B;
+  border-color: #90c082;
 }
 
 .icheck-light > input:first-child:checked + label::before,
 .icheck-light > input:first-child:checked + input[type="hidden"] + label::before {
-  background-color: #9ADE7B;
-  border-color: #9ADE7B;
+  background-color: #90c082;
+  border-color: #90c082;
 }
 
 .icheck-dark > input:first-child:not(:checked):not(:disabled):hover + label::before,
@@ -5635,7 +5635,7 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 }
 
 .pace-light .pace .pace-progress {
-  background: #9ADE7B;
+  background: #90c082;
 }
 
 .pace-barber-shop-light .pace {
@@ -5643,7 +5643,7 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 }
 
 .pace-barber-shop-light .pace .pace-progress {
-  background: #9ADE7B;
+  background: #90c082;
 }
 
 .pace-barber-shop-light .pace .pace-activity {
@@ -5651,11 +5651,11 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 }
 
 .pace-big-counter-light .pace .pace-progress::after {
-  color: rgba(154, 222, 123, 0.2);
+  color: rgba(144, 192, 130, 0.2);
 }
 
 .pace-bounce-light .pace .pace-activity {
-  background: #9ADE7B;
+  background: #90c082;
 }
 
 .pace-center-atom-light .pace-progress {
@@ -5664,7 +5664,7 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 }
 
 .pace-center-atom-light .pace-progress::before {
-  background: #9ADE7B;
+  background: #90c082;
   color: #1f2d3d;
   font-size: .8rem;
   line-height: .7rem;
@@ -5672,41 +5672,41 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 }
 
 .pace-center-atom-light .pace-activity {
-  border-color: #9ADE7B;
+  border-color: #90c082;
 }
 
 .pace-center-atom-light .pace-activity::after, .pace-center-atom-light .pace-activity::before {
-  border-color: #9ADE7B;
+  border-color: #90c082;
 }
 
 .pace-center-circle-light .pace .pace-progress {
-  background: rgba(154, 222, 123, 0.8);
+  background: rgba(144, 192, 130, 0.8);
   color: #1f2d3d;
 }
 
 .pace-center-radar-light .pace .pace-activity {
-  border-color: #9ADE7B transparent transparent;
+  border-color: #90c082 transparent transparent;
 }
 
 .pace-center-radar-light .pace .pace-activity::before {
-  border-color: #9ADE7B transparent transparent;
+  border-color: #90c082 transparent transparent;
 }
 
 .pace-center-simple-light .pace {
   background: #1f2d3d;
-  border-color: #9ADE7B;
+  border-color: #90c082;
 }
 
 .pace-center-simple-light .pace .pace-progress {
-  background: #9ADE7B;
+  background: #90c082;
 }
 
 .pace-material-light .pace {
-  color: #9ADE7B;
+  color: #90c082;
 }
 
 .pace-corner-indicator-light .pace .pace-activity {
-  background: #9ADE7B;
+  background: #90c082;
 }
 
 .pace-corner-indicator-light .pace .pace-activity::after,
@@ -5715,45 +5715,45 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 }
 
 .pace-corner-indicator-light .pace .pace-activity::before {
-  border-right-color: rgba(154, 222, 123, 0.2);
-  border-left-color: rgba(154, 222, 123, 0.2);
+  border-right-color: rgba(144, 192, 130, 0.2);
+  border-left-color: rgba(144, 192, 130, 0.2);
 }
 
 .pace-corner-indicator-light .pace .pace-activity::after {
-  border-top-color: rgba(154, 222, 123, 0.2);
-  border-bottom-color: rgba(154, 222, 123, 0.2);
+  border-top-color: rgba(144, 192, 130, 0.2);
+  border-bottom-color: rgba(144, 192, 130, 0.2);
 }
 
 .pace-fill-left-light .pace .pace-progress {
-  background-color: rgba(154, 222, 123, 0.2);
+  background-color: rgba(144, 192, 130, 0.2);
 }
 
 .pace-flash-light .pace .pace-progress {
-  background: #9ADE7B;
+  background: #90c082;
 }
 
 .pace-flash-light .pace .pace-progress-inner {
-  box-shadow: 0 0 10px #9ADE7B, 0 0 5px #9ADE7B;
+  box-shadow: 0 0 10px #90c082, 0 0 5px #90c082;
 }
 
 .pace-flash-light .pace .pace-activity {
-  border-top-color: #9ADE7B;
-  border-left-color: #9ADE7B;
+  border-top-color: #90c082;
+  border-left-color: #90c082;
 }
 
 .pace-loading-bar-light .pace .pace-progress {
-  background: #9ADE7B;
-  color: #9ADE7B;
+  background: #90c082;
+  color: #90c082;
   box-shadow: 120px 0 #1f2d3d, 240px 0 #1f2d3d;
 }
 
 .pace-loading-bar-light .pace .pace-activity {
-  box-shadow: inset 0 0 0 2px #9ADE7B, inset 0 0 0 7px #1f2d3d;
+  box-shadow: inset 0 0 0 2px #90c082, inset 0 0 0 7px #1f2d3d;
 }
 
 .pace-mac-osx-light .pace .pace-progress {
-  background-color: #9ADE7B;
-  box-shadow: inset -1px 0 #9ADE7B, inset 0 -1px #9ADE7B, inset 0 2px rgba(31, 45, 61, 0.5), inset 0 6px rgba(31, 45, 61, 0.3);
+  background-color: #90c082;
+  box-shadow: inset -1px 0 #90c082, inset 0 -1px #90c082, inset 0 2px rgba(31, 45, 61, 0.5), inset 0 6px rgba(31, 45, 61, 0.3);
 }
 
 .pace-mac-osx-light .pace .pace-activity {
@@ -5762,7 +5762,7 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 }
 
 .pace-progress-color-light .pace-progress {
-  color: #9ADE7B;
+  color: #90c082;
 }
 
 .pace-dark .pace .pace-progress {
@@ -8486,7 +8486,7 @@ select.form-control-sm ~ .select2-container--default .select2-selection--multipl
 
 .bootstrap-switch .bootstrap-switch-handle-on.bootstrap-switch-light,
 .bootstrap-switch .bootstrap-switch-handle-off.bootstrap-switch-light {
-  background: #9ADE7B;
+  background: #90c082;
   color: #1f2d3d;
 }
 

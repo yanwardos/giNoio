@@ -16,13 +16,13 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/adminlte.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-xl navbar-dark bg-dark shadow-sm " style="position: sticky; top: 0;">
+        <nav class="navbar navbar-expand-xl navbar-light bg-light shadow-sm " style="position: sticky; top: 0;">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name') }}
@@ -101,4 +101,6 @@
 <!-- Bootstrap 4 -->
 <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script> 
 
+    <!-- Scripts -->
+    <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
 </html>

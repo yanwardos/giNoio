@@ -695,7 +695,7 @@ body.iframe-mode-fullscreen.layout-navbar-fixed .wrapper .content-wrapper {
   left: 0;
   width: 100%;
   display: none;
-  background-color: #C5EBAA;
+  background-color: #fff;
 }
 
 .content-wrapper.iframe-mode .tab-loading > div {

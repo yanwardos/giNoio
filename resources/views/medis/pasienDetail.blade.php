@@ -54,6 +54,10 @@
                                     <td>{{$pasien->user->name}}</td>
                                 </tr>
                                 <tr>
+                                    <th>Email</th>
+                                    <td>{{$pasien->user->email}}</td>
+                                </tr>
+                                <tr>
                                     <th>Jenis Kelamin</th>
                                     <td>{{$pasien->gender()}}</td>
                                 </tr>

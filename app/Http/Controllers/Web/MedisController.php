@@ -263,11 +263,12 @@ class MedisController extends Controller
     # TODO: record index
     public function riwayatList()
     {
-        return view('medis.riwayatList');
+        $pasiens = Pasien::all();
+        return view('medis.riwayatList', compact('pasiens'));
     }
 
     # TODO: show detail riwayat
-    public function showRiwayat(Request $request){
+    public function riwayatPasienList(Pasien $pasien){
 
     }
 }

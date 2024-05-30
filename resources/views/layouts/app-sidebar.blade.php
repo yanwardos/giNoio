@@ -10,14 +10,12 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/adminlte.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 
     {{-- FontAwesome --}}
@@ -32,7 +30,7 @@
 
 <body>
     <div id="app" class="container-fluid d-flex p-0 m-0 text-black">
-        <div class="d-flex flex-column flex-shrink-0 p-3 m-0   bg-dark vh-100" style="width: 280px;">
+        <div class="d-flex flex-column flex-shrink-0 p-3 m-0     vh-100" style="width: 280px;">
             <a href="#" class="d-flex flex-column align-items-center  mb-1 mb-md-0  text-decoration-none">
                 <svg fill="#000" width="70px" height="70px" viewBox="0 0 100 100" id="Layer_1" version="1.1"
                     xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -110,6 +108,8 @@
     </div>
 
     @yield('script')
+    <!-- Scripts -->
+    <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
 </body>
 
 </html>

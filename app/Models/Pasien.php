@@ -37,4 +37,13 @@ class Pasien extends Model
     public function gender(){
         return $this->gender?'Laki-laki': 'Perempuan';
     }
+
+    // riwayat
+    public function getTotalTerapiSeconds(){
+        return 400;
+    }
+
+    public function getTerapiPerkembangan() {
+        return 0.7;
+    }
 }

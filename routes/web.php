@@ -79,7 +79,8 @@ Route::middleware(['auth', 'role:medis'])->prefix('medis')->group(function () {
 
     Route::post('/pasien/{pasien}/passwordReset', [MedisController::class, 'resetPassword'])->name('medis.pasienPasswordReset');
 
-    Route::get('/records', [MedisController::class, 'riwayatList'])->name('medis.riwayatList');
+    Route::get('/riwayatTerapi', [MedisController::class, 'riwayatList'])->name('medis.riwayatList');
+    Route::get('/riwayat/pasien/{pasien}', [MedisController::class, 'riwayatPasienList'])->name('medis.riwayatPasienList');
 });
 
 

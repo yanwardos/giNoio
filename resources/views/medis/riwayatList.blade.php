@@ -31,49 +31,31 @@
                         <thead>
                             <tr>
                                 <th class="col-1">No</th>
-                                <th class="col-5">Nama Pasien</th>
-                                <th class="col-2">Waktu</th>
-                                <th class="col-2">Durasi</th>
+                                <th class="col-4">Nama Pasien</th>
+                                <th class="col-2">Total</th>
+                                <th class="col-3">Perkembangan</th>
                                 <th class="col-2">Aksi detail</th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td class="col-1">No</td>
-                                <td class="col-5">Nama Pasien</td>
-                                <td class="col-2">Waktu</td>
-                                <td class="col-2">Durasi</td>
-                                <td class="col-2">Aksi detail</td>
-                            </tr>
-                            <tr>
-                                <td class="col-1">No</td>
-                                <td class="col-5">Nama Pasien</td>
-                                <td class="col-2">Waktu</td>
-                                <td class="col-2">Durasi</td>
-                                <td class="col-2">Aksi detail</td>
-                            </tr>
-                            <tr>
-                                <td class="col-1">No</td>
-                                <td class="col-5">Nama Pasien</td>
-                                <td class="col-2">Waktu</td>
-                                <td class="col-2">Durasi</td>
-                                <td class="col-2">Aksi detail</td>
-                            </tr>
-                            <tr>
-                                <td class="col-1">No</td>
-                                <td class="col-5">Nama Pasien</td>
-                                <td class="col-2">Waktu</td>
-                                <td class="col-2">Durasi</td>
-                                <td class="col-2">Aksi detail</td>
-                            </tr>
-                            <tr>
-                                <td class="col-1">No</td>
-                                <td class="col-5">Nama Pasien</td>
-                                <td class="col-2">Waktu</td>
-                                <td class="col-2">Durasi</td>
-                                <td class="col-2">Aksi detail</td>
-                            </tr>
+                            @php
+                                $no = 1;
+                            @endphp
+                            @foreach ($pasiens as $pasien) 
+                                <tr>
+                                    <td class="col-1">{{$no++}}</td>
+                                    <td class="col-4">{{$pasien->user->name}}</td>
+                                    <td class="col-2">{{$pasien->getTotalTerapiSeconds()}}</td>
+                                    <td class="col-3">{{$pasien->getTerapiPerkembangan()}}</td>
+                                    <td class="col-2"> 
+                                        <a href="{{route('medis.riwayatPasienList', $pasien)}}" class="btn btn-block btn-warning btn-xs">
+                                            <i class="fas fa-info"></i>
+                                            Detail
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach 
                         </tbody>
                     </table>
                 </div>
