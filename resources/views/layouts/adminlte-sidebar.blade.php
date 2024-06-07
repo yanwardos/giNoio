@@ -205,9 +205,20 @@
                         @endpasien
  
                         <li class="nav-header">SISTEM</li>
-                        @auth
                             <li class="nav-item">
-                                <a class="  nav-link" href="{{ route('logout') }}"
+                                <a class="nav-link
+                                    {{Route::is('myProfile')? 'active' : ''}} 
+                                    {{Route::is('myProfile.edit')? 'active' : ''}}
+                                    " 
+                                href="{{route('myProfile')}}">
+                                    <i class="fas fa-user nav-icon"></i>
+                                    Profil
+                                </a>
+                            </li>
+                        @auth 
+                            <li class="nav-item">
+                                <a class="nav-link"
+                                href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">
                                     <i class="fas fa-sign-out-alt nav-icon"></i>

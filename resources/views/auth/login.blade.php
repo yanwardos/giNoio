@@ -9,7 +9,7 @@
                     <div class="card p-3 card-login bg-light text-light shadow">
                         <div class="card-body px-4 py-3">
                             <a href="{{ route('landing') }}"
-                                class="text-decoration-none   d-flex flex-column justify-content-center mb-2">
+                                class="text-decoration-none d-flex flex-column justify-content-center mb-2">
                                 <img class="img-fluid" style="height: 100px;" src="{{ asset('assets/img/brain.svg') }}"
                                     alt="Goniometer Logo">
                                 <strong class="text-center fw-bold h2 pt-2 pb-0">Goniometer</strong>
@@ -51,32 +51,19 @@
                                             </span>
                                         @enderror
                                     </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <div class="col-12 ">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                                {{ old('remember') ? 'checked' : '' }}>
-
-                                            <label class="form-check-label" for="remember">
-                                                {{ __('Remember Me') }}
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
+                                </div> 
 
                                 <div class="row mb-0">
-                                    <div class="col-12 d-flex flex-row justify-content-between">
-                                        <button type="submit" class="btn btn-light">
+                                    <div class="col-12 d-flex flex-row justify-content-center">
+                                        <button type="submit" class="btn btn-light bg-white fw-bold">
                                             {{ __('Login') }}
                                         </button>
 
-                                        @if (Route::has('password.request'))
+                                        {{-- @if (Route::has('password.request'))
                                             <a class="btn btn-link text-light" href="{{ route('password.request') }}">
                                                 {{ __('Forgot Your Password?') }}
                                             </a>
-                                        @endif
+                                        @endif --}}
                                     </div>
                                 </div>
                             </form>

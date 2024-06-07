@@ -51,14 +51,28 @@ class User extends Authenticatable
         return $this->id;
     }
 
-    public function roles()
+    public function role()
     {
-        return $this->hasOne(Role::class, 'id');
+        return $this->belongsTo(Role::class, 'role_id', 'id');
     }
 
+    // role
     public function hasRole($role)
     {
-        return $this->roles->name === $role;
+        // if(!$this->roles) return null;
+        return $this->role->name === $role;
+    }
+    
+    public function getPasien() { 
+        return  Pasien::where('user_id', $this->id)->first();
+    }
+    
+    public function getMedis() {
+        return  Medis::where('user_id', $this->id)->first();
+    }
+
+    public function getAdmin() {
+        return  Admin::where('user_id', $this->id)->first();
     }
 
     public function getAvatar(){

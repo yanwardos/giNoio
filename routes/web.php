@@ -2,7 +2,8 @@
 
 use App\Http\Controllers\Web\AdminController;
 use App\Http\Controllers\Web\MedisController;
-use App\Http\Controllers\Web\ChangePasswordController; 
+use App\Http\Controllers\Web\ChangePasswordController;
+use App\Http\Controllers\Web\GeneralUserController;
 use App\Http\Controllers\Web\PasienController;
 use App\Models\Admin;
 use App\Models\Device;
@@ -46,8 +47,21 @@ Route::get('/contact', function () {
 // Route::get('/login', [LoginController::class, 'index'])->name('login');
 // Route::get('/changepassword', [ChangePasswordController::class, 'index'])->name('changePassword');
 
-Route::middleware('auth')->get('dashboard', function () {
-    return redirect(auth()->user()->roles->name);
+
+// General
+Route::middleware(['auth'])->group(function () {
+    Route::get('dashboard', function(){
+        return redirect(auth()->user()->role->name);
+    })->name('dashboard');
+
+    Route::get('myProfile', [GeneralUserController::class, 'showMyProfile'])->name('myProfile');
+
+    Route::get('myProfile/edit', [GeneralUserController::class, 'editMyProfile'])->name('myProfile.edit');
+    Route::post('myProfile/update', [GeneralUserController::class, 'updateMyProfile'])->name('myProfile.update');
+
+    Route::get('myPassword/edit', [GeneralUserController::class, 'editMyPassword'])->name('myPassword.edit');
+    Route::get('myPassword/update', [GeneralUserController::class, 'updateMyPassword'])->name('myPassword.update');
+
 });
 
 // Admin

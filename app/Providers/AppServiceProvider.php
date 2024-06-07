@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Enum\RoleEnum;
 use Illuminate\Database\Schema\Builder;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -29,16 +30,16 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        Blade::if('medis', function () {
-            return auth()->user()->hasRole('medis');
+        Blade::if('admin', function () {
+            return auth()->user()->hasRole(RoleEnum::ADMIN->name());
         });
 
-        Blade::if('admin', function () {
-            return auth()->user()->hasRole('admin');
+        Blade::if('medis', function () {
+            return auth()->user()->hasRole(RoleEnum::MEDIS->name());
         });
 
         Blade::if('pasien', function () {
-            return auth()->user()->hasRole('pasien');
+            return auth()->user()->hasRole(RoleEnum::PASIEN->name());
         });
     }
 }
