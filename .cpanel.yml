@@ -5,5 +5,5 @@ deployment:
         - cd $DEPLOYPATH
         - php artisan db:wipe
         - php artisan migrate:fresh
-        - php artisan db:seed 
+        - php artisan db:seed
         - php artisan storage:link
