@@ -5,4 +5,5 @@ deployment:
         - cd $DEPLOYPATH
         - php artisan migrate:fresh
         - php artisan db:seed
+        - mkdir storage/app/avatar
         - php artisan storage:link
