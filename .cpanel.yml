@@ -7,3 +7,4 @@ deployment:
         - php artisan db:seed
         - mkdir storage/app/avatar
         - php artisan storage:link
+ 
