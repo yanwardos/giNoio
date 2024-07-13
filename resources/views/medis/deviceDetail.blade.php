@@ -72,11 +72,7 @@
                     @else
                         <span class="badge badge-warning p-1">
                             Perangkat ini belum didaftarkan ke pasien.
-                        </span>
-                        <br>
-                        <a class="btn btn-sm btn-primary mt-2" href="{{route('medis.deviceAssignPasienInterface', $device->id)}}">
-                            Daftarkan pasien
-                        </a>
+                        </span> 
                     @endif 
                 </div>
             </div>
@@ -136,28 +132,5 @@
 
 @section('scripts') 
 <script> 
-    var isAssigning = false;
-    $('.btn-unassign-pasien').click((event)=>{
-        if(isAssigning) return;
-        isAssigning = true;
-        var pasienId = $(event.target).attr('pasien-id');
-        var deviceId = $(event.target).attr('device-id');
-        
-        $.ajax({
-            url: "{{route('medis.deviceUnassignPasien')}}",
-            method: 'POST',
-            data: {
-                pasienId: pasienId,
-                deviceId: deviceId
-            },
-            success: (response)=>{
-                isAssigning = false;
-                window.location.replace("{{route('medis.device', $device->id)}}");
-            },
-            error: (jqXHR, textStatus, errorThrown)=>{
-                isAssigning = false;
-            }
-        })
-    })
 </script>
 @endsection

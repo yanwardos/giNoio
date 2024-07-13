@@ -35,10 +35,9 @@
                             <tr>
                                 <th class="col-1">No</th>
                                 <th class="col-4">Nomor Seri</th>
-                                <th class="col-2">Tanggal Registrasi</th>
-                                <th class="col-2">Pasien Pengguna</th>
-                                <th class="col-1">Status</th>
-                                <th class="col-2">Aksi detail</th>
+                                <th class="col-2">Tanggal Registrasi</th> 
+                                <th class="col-2">Status</th>
+                                <th class="col-3">Aksi detail</th>
 
                             </tr>
                         </thead>
@@ -54,18 +53,7 @@
                                         <small>
                                             {{$device->created_at}}
                                         </small>
-                                    </td>
-                                    <td class="col-2">
-                                        @if ($device->pasien)
-                                            <span class="badge badge-success">
-                                                {{$device->pasien->user->name}}
-                                            </span>
-                                        @else
-                                            <span class="badge badge-secondary">
-                                                Belum Didaftarkan
-                                            </span>
-                                        @endif
-                                    </td>
+                                    </td> 
                                     <td class="col-1">
                                         @switch('online')
                                             @case('online')

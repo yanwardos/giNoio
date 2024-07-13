@@ -23,35 +23,12 @@
 @endsection
 
 @section('content-main')
-    <div class="container-fluid">
-        <div class="col-12 col-lg-11 col-xl-10 d-flex flex-column p-2">
-            <div class="card bg-gray-light"> 
-                <div class="card-header">
-                    <h3 class="card-title">
-                        Informasi Perangkat
-                    </h3>
-                </div>
-                <div class="card-body shadow">
-                    <table class="table table-responsive table-borderless table-hover">
-                        <tr>
-                            <th>Nomor Seri</th>
-                            <td>{{$device->serialNumber}}</td>
-                        </tr>
-                        <tr>
-                            <th>Tanggal Registrasi</th>
-                            <td>
-                                {{$device->created_at}}
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </div>
+    <div class="container-fluid"> 
         <div class="col-12 col-lg-11 col-xl-10 d-flex flex-column p-2">
             <div class="card bg-gray-light">
                 <div class="card-header">
                     <h3 class="card-title">
-                        Pilih Pasien
+                        Pilih Perangkat
                     </h3>
                 </div>
                 <div class="card-body shadow">
@@ -59,7 +36,8 @@
                         <thead>
                             <tr>
                                 <th class="col-1">No</th>
-                                <th class="col-8">Nama Pasien</th>
+                                <th class="col-5">Seri Alat</th>
+                                <th class="col-3">Tanggal Registrasi</th>
                                 <th class="col-3">Aksi</th>
                             </tr>
                         </thead>
@@ -67,11 +45,12 @@
                             $num = 1;
                         @endphp
                         <tbody>
-                            @foreach ($pasiens as $pasien)
-                                @if(!$pasien->device)
+                            @foreach ($devices as $device)
+                                @if(!$device->pasien)
                                     <tr>
                                         <td>{{$num++}}</td>
-                                        <td>{{$pasien->user->name}}</td>
+                                        <td>{{$device->serialNumber}}</td>
+                                        <td>{{$device->created_at}}</td>
                                         <td>
                                             <button device-id="{{$device->id}}" pasien-id="{{$pasien->id}}" class="btn-assign-pasien btn btn-sm btn-primary">
                                                 Pasangkan
@@ -102,7 +81,7 @@
         var deviceId = $(event.target).attr('device-id');
         
         $.ajax({
-            url: "{{route('medis.deviceAssignPasien')}}",
+            url: "{{route('medis.pasien.assignDevice.store')}}",
             method: 'POST',
             data: {
                 pasienId: pasienId,
@@ -110,7 +89,7 @@
             },
             success: (response)=>{
                 isAssigning = false;
-                window.location.replace("{{route('medis.device', $device->id)}}");
+                window.location.replace("{{route('medis.records.pasien', $pasien->id)}}");
             },
             error: (jqXHR, textStatus, errorThrown)=>{
                 isAssigning = false;

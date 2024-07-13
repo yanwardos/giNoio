@@ -19,6 +19,6 @@ class Device extends Model
 
     public function pasien()
     {
-        return $this->belongsTo(Pasien::class, 'ownerPasienId', 'id');
+        return $this->belongsTo(Pasien::class, 'id', 'ownedDeviceId');
     }
 }

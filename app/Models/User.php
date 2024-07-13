@@ -13,6 +13,7 @@ use App\Models\Role;
 
 class User extends Authenticatable
 {
+    static $DEFAULT_PASSWORD = "PASSWORD";
     use HasApiTokens, HasFactory, Notifiable;
 
     /**

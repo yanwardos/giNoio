@@ -156,23 +156,23 @@
                             </li>
                             <li class="nav-header">PASIEN</li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Route::is('medis.pasienList')||Route::is('medis.pasienShow')||Route::is('medis.pasienEdit') ? 'active' : '' }}"
-                                    href="{{ route('medis.pasienList') }}">
+                                <a class="nav-link {{ Route::is('medis.pasien.list')||Route::is('medis.pasienShow')||Route::is('medis.pasienEdit') ? 'active' : '' }}"
+                                    href="{{ route('medis.pasien.list') }}">
                                     <i class="fas fa-users nav-icon"></i>
                                     <p>Seluruh Pasien</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Route::is('medis.pasienNew') ? 'active' : '' }}"
-                                    href="{{ route('medis.pasienNew') }}">
+                                <a class="nav-link {{ Route::is('medis.pasien.create') ? 'active' : '' }}"
+                                    href="{{ route('medis.pasien.create') }}">
                                     <i class="fas fa-plus nav-icon"></i>
                                     <p>Daftarkan Pasien</p>
                                 </a>
                             </li>
                             <li class="nav-header">MONITORING</li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Route::is('medis.records') ? 'active' : '' }}"
-                                    href="{{ route('medis.records') }}">
+                                <a class="nav-link {{ Route::is('medis.records.allPasien') ? 'active' : '' }}"
+                                    href="{{ route('medis.records.allPasien') }}">
                                     <i class="fas fa-history nav-icon"></i>
                                     <p>Data Pasien</p>
                                 </a>

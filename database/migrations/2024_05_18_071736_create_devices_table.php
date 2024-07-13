@@ -17,8 +17,6 @@ class CreateDevicesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('serialNumber')->nullable();
-            $table->unsignedBigInteger('ownerPasienId')->nullable();
-            $table->foreign('ownerPasienId')->references('id')->on('pasiens');
         });
     }
 

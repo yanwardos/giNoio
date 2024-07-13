@@ -15,7 +15,10 @@
                     <li class="breadcrumb-item">
                         <a href="{{ route('medis.dashboard') }}">Dashboard</a>
                     </li>
-                    <li class="breadcrumb-item active">Pasien</li>
+                    <li class="breadcrumb-item">
+                        <a href="{{ route('medis.pasien.list') }}">Pasien</a>
+                    </li>
+                    <li class="breadcrumb-item active">{{$pasien->user->name}}</li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->
@@ -31,7 +34,7 @@
                         <span class="h6">Data Pasien</span>
                     </div>
                     <div class="card-tools">
-                        <a href="{{route('medis.pasienEdit', $pasien)}}" class="btn btn-info btn-sm">
+                        <a href="{{route('medis.pasien.edit', $pasien)}}" class="btn btn-info btn-sm">
                             <i class="fas fa-edit"></i>
                             Edit
                         </a>
@@ -76,7 +79,7 @@
                                 <tr>
                                     <th>Riwayat Penyakit</th>
                                     <td>
-                                        <!-- TODO: RIWAYAT PENYAKIT -->
+                                        {{$pasien->illnessHistory}}
                                     </td>
                                 </tr>
                             </table> 
@@ -125,7 +128,7 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
-                <form action="{{route('medis.pasienDelete', $pasien)}}" method="POST">
+                <form action="{{route('medis.pasien.delete', $pasien)}}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-danger">Hapus pasien</button>
                 </form>
@@ -152,12 +155,14 @@
                     <br>
                     <strong>{{$pasien->user->name}}</strong>
                     <br>
-                    Password default adalah: <strong>{{env('USER_DEFAULT_PASSWORD')}}</strong>
+                    Password default adalah: <strong>{{
+                        env('USER_DEFAULT_PASSWORD')}}
+                    </strong>
                 </p>
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-light" data-dismiss="modal">Batal</button>
-                <form action="{{route('medis.pasienPasswordReset', $pasien)}}" method="POST">
+                <form action="{{route('medis.pasien.password.reset', $pasien)}}" method="POST">
                     @csrf
                     <button type="submit" class="btn btn-danger">Reset Password</button>
                 </form>

@@ -27,7 +27,7 @@
 
     <div class="container-fluid">
         <div class="col-12 col-lg-10 col-xl-8 d-flex flex-column p-2">
-            <form action="{{route('medis.pasienCreate')}}" method="POST" novalidate>
+            <form action="{{route('medis.pasien.store')}}" method="POST" novalidate>
                 @csrf
                 <div class="card bg-gray-light">
                     <div class="card-header">
@@ -126,9 +126,20 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <th>Riwayat Penyakit</th>
+                                        <th>
+                                            <label for="inpIllnessHistory">
+                                                Riwayat Penyakit
+                                            </label>
+                                        </th>
                                         <td>
-                                            <!-- TODO: RIWAYAT PENYAKIT -->
+                                            <textarea 
+                                                class="form-control @error('inpIllnessHistory') is-invalid @enderror"
+                                                name="inpIllnessHistory" id="inpIllnessHistory" cols="10" rows="5">@if (old('inpIllnessHistory')){{old('inpIllnessHistory')}}@endif</textarea>
+                                            @error('inpIllnessHistory')
+                                                <div id="inpIllnessHistoryFeedback" class="invalid-feedback">
+                                                    {{$message}}
+                                                </div>
+                                            @enderror
                                         </td>
                                     </tr>
                                 </table> 

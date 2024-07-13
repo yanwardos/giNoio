@@ -13,7 +13,8 @@ class Pasien extends Model
         'weight',
         'height',
         'gender', 
-        'user_id'
+        'user_id',
+        'illnessHistory'
     ];
 
     use HasFactory;
@@ -49,6 +50,6 @@ class Pasien extends Model
 
     // device
     public function device(){
-        return $this->hasOne(Device::class, 'ownerPasienId', 'id');
+        return $this->hasOne(Device::class, 'id', 'ownedDeviceId');
     }
 }

@@ -23,7 +23,8 @@ class PasienFactory extends Factory
             'weight' => $this->faker->randomFloat(1, 20, 200),
             'height' => $this->faker->randomFloat(0, 50, 300),
             'gender'=> $this->faker->boolean(),
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'illnessHistory' => $this->faker->text(200)
         ];
     }
 }

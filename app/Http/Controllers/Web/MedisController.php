@@ -26,11 +26,11 @@ class MedisController extends Controller
 
     // PASIEN
     # TODO: patient create
-    public function newPasien() {
-        return view('medis.pasienNew');
+    public function pasienCreate() {
+        return view('medis.pasien.create');
     }
 
-    public function createPasien(Request $request)
+    public function pasienStore(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'inpName' => 'required|string|max:255|min:3',
@@ -91,7 +91,7 @@ class MedisController extends Controller
         try {
             DB::commit();
             return redirect()
-                ->to(route('medis.pasienList'))
+                ->to(route('medis.pasien.list'))
                 ->with('messageSuccess', 'Berhasil menambahkan pasien.');
         } catch (\Throwable $th) {
             return redirect()
@@ -101,35 +101,35 @@ class MedisController extends Controller
                 'messageError' => 'Gagal menambahkan pasien.'
             ]);
         }
- 
     }
 
     # TODO: pasien list
     public function pasienList()
     {
         $pasiens = Pasien::all();
-        return view('medis.pasienList', compact('pasiens'));
+        return view('medis.pasien.list', compact('pasiens'));
     }
 
     #TODO: show pasien
     public function showPasien(Pasien $pasien){ 
-        return view('medis.pasienDetail', compact('pasien'));
+        return view('medis.pasien.detail', compact('pasien'));
     }
 
     #: edit pasien
-    public function editPasien(Pasien $pasien){
-        return view('medis.pasienEdit', compact('pasien'));
+    public function pasienEdit(Pasien $pasien){
+        return view('medis.pasien.edit', compact('pasien'));
     }
 
     #: update pasien
-    public function updatePasien(Pasien $pasien, Request $request){ 
+    public function pasienUpdate(Pasien $pasien, Request $request){ 
  
         $validator = Validator::make($request->all(), [
             'inpName' => 'required|string|max:255|min:3',
             'inpGender' => 'required|numeric|between:1,2',
             'inpBorn' => 'required|date_format:d/m/Y', 
             'inpWeight' => 'required|numeric', 
-            'inpHeight' => 'required|numeric', 
+            'inpHeight' => 'required|numeric',
+            'inpIllnessHistory' => 'string'
         ]);
 
         if($validator->fails()){ 
@@ -159,6 +159,7 @@ class MedisController extends Controller
         $pasien->born = $bornDate;
         $pasien->weight = $request->input('inpWeight');
         $pasien->height = $request->input('inpHeight');
+        $pasien->illnessHistory = $request->input('inpIllnessHistory');
 
         if(!$pasien->save()){
             DB::rollBack();
@@ -174,7 +175,7 @@ class MedisController extends Controller
         try {
             DB::commit();
             return redirect()
-                ->to(route('medis.pasienEdit', $pasien))
+                ->to(route('medis.pasien.edit', $pasien))
                 ->with('messageSuccess', 'Berhasil mengupdate data pasien.');
         } catch (\Throwable $th) {
             return redirect()
@@ -188,7 +189,7 @@ class MedisController extends Controller
     }
 
     #: delete pasien
-    public function deletePasien(Pasien $pasien){
+    public function pasienDelete(Pasien $pasien){
         
         DB::beginTransaction();
 
@@ -214,7 +215,7 @@ class MedisController extends Controller
 
         try {
             DB::commit();
-            return redirect(route('medis.pasienList'))
+            return redirect(route('medis.pasien.list'))
                 ->with('messageSuccess', 'Berhasil menghapus data pasien.');
 
         } catch (\Throwable $th) {
@@ -229,7 +230,7 @@ class MedisController extends Controller
     public function resetPassword(Pasien $pasien) {
         if(!$pasien){
             return redirect()
-                ->to(route('medis.pasienList', $pasien))
+                ->to(route('medis.pasien.list', $pasien))
                 ->with('messageError', 'Pasien tidak ditemukan.'); 
         }
 
@@ -238,32 +239,26 @@ class MedisController extends Controller
 
         if(!$pasien->user->save()){
             return redirect()
-                ->to(route('medis.pasienShow', $pasien))
+                ->to(route('medis.pasien.list', $pasien))
                 ->with('messageError', 'Gagal mereset password pasien.'); 
         }
 
         return redirect()
-            ->to(route('medis.pasienShow', $pasien))
+            ->to(route('medis.pasien.show', $pasien))
             ->with('messageSuccess', 'Berhasil mereset password.');
     }
-
-    # TODO: patient store
-    public function storePasien()
-    {
-        return 'medis: storePasien';
-    }
-
+ 
     // RIWAYAT
     # TODO: record index
-    public function records()
+    public function recordsAllPasiens()
     {
         $pasiens = Pasien::all();
-        return view('medis.records', compact('pasiens'));
+        return view('medis.recordsAllPasiens', compact('pasiens'));
     }
 
     # TODO: show detail riwayat
     public function recordsPasien(Pasien $pasien){
-        return view('medis.recordsPasien', compact('pasien'));
+        return view('medis.recordPasien', compact('pasien'));
     }
 
     // DEVICES
@@ -308,14 +303,14 @@ class MedisController extends Controller
         return redirect(route('medis.devices'));
     }
     
-    public function deviceAssignPasienInterface(Device $device) {
-        $pasiens = Pasien::all();
+    public function assignDeviceToPasien(Pasien $pasien) {
+        $devices = Device::all();
         
-        return view('medis.deviceAssignPasien', compact('pasiens', 'device'));
+        return view('medis.deviceAssignToPasien', compact('pasien', 'devices'));
     }
 
     // APIS
-    public function deviceAssignPasien(Request $request) {
+    public function assignDeviceToPasienStore(Request $request){
         $deviceId = $request->input('deviceId');
         $pasienId = $request->input('pasienId');
 
@@ -328,9 +323,9 @@ class MedisController extends Controller
             ], 422);
         }
 
-        $device->ownerPasienId = $pasien->id;
+        $pasien->ownedDeviceId = $device->id;
 
-        if(!$device->save()){
+        if(!$pasien->save()){
             return response()->json([
                 'message' => 'unexpected error'
             ], 500);
@@ -341,22 +336,20 @@ class MedisController extends Controller
         ], 200);
     }
 
-    public function deviceUnassignPasien(Request $request) {
-        $deviceId = $request->input('deviceId');
+    public function unassignDeviceFromPasienStore(Request $request){ 
         $pasienId = $request->input('pasienId');
-
-        $device = Device::find($deviceId);
+ 
         $pasien = Pasien::find($pasienId);
 
-        if(!$device || !$pasien){
+        if(!$pasien){
             return response()->json([
                 'message' => 'invalid input'
             ], 422);
         }
 
-        $device->ownerPasienId = null;
+        $pasien->ownedDeviceId = null;
 
-        if(!$device->save()){
+        if(!$pasien->save()){
             return response()->json([
                 'message' => 'unexpected error'
             ], 500);
@@ -364,6 +357,6 @@ class MedisController extends Controller
 
         return response()->json([
             'message' => 'ok'
-        ], 200);
-    }
+        ], 200); 
+    } 
 }

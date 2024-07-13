@@ -21,7 +21,7 @@ class CreatePasiensTable extends Migration
             $table->float('weight')->unsigned();
             $table->float('height')->unsigned();
             $table->boolean('gender');
-            $table->json('illnessHistory')->nullable();
+            $table->string('illnessHistory')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
         });
     }
