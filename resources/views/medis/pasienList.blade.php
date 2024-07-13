@@ -24,7 +24,7 @@
 
 @section('content-main')
     <div class="container-fluid">
-        <div class="col-12 col-lg-10 col-xl-8 d-flex flex-column p-2">
+        <div class="col-12 col-lg-11 col-xl-10 d-flex flex-column p-2">
             <div class="card bg-gray-light">
                 <div class="card-body">
                     <table id="tabelPasien" class="table table-bordered table-hover">
