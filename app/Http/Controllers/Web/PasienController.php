@@ -18,4 +18,9 @@ class PasienController extends Controller
     {
         return view('pasien.riwayatList');
     }
+
+    # TODO: halaman terapi pasien
+    public function teraphy(){
+        return view('pasien.terapi');
+    }
 }

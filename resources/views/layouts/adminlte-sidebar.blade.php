@@ -169,24 +169,33 @@
                                     <p>Daftarkan Pasien</p>
                                 </a>
                             </li>
-                            <li class="nav-header">REKAM MEDIS</li>
+                            <li class="nav-header">MONITORING</li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Route::is('medis.riwayatList') ? 'active' : '' }}"
-                                    href="{{ route('medis.riwayatList') }}">
+                                <a class="nav-link {{ Route::is('medis.records') ? 'active' : '' }}"
+                                    href="{{ route('medis.records') }}">
                                     <i class="fas fa-history nav-icon"></i>
-                                    <p>Riwayat</p>
+                                    <p>Data Pasien</p>
                                 </a>
-                            </li>
+                            </li> 
+                            <li class="nav-header">PERANGKAT</li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Route::is(' ') ? 'active' : '' }}" href="#">
-                                    <i class="far fa-history nav-icon"></i>
-                                    <p>Rekam</p>
+                                <a class="nav-link {{ Route::is('medis.devices')||Route::is('medis.device') ? 'active' : '' }}"
+                                    href="{{ route('medis.devices') }}">
+                                    <i class="fas fa-tools nav-icon"></i>
+                                    <p>Data Perangkat</p>
                                 </a>
-                            </li>
+                            </li> 
+                            <li class="nav-item">
+                                <a class="nav-link {{ Route::is('medis.deviceRegister') ? 'active' : '' }}"
+                                    href="{{ route('medis.deviceRegister') }}">
+                                    <i class="fas fa-plus nav-icon"></i>
+                                    <p>Registrasi</p>
+                                </a>
+                            </li> 
                         @endmedis
                         
                         @pasien
-                            <li class="nav-item menu-open">
+                            <li class="nav-item">
                                 <a href="{{ route('pasien.dashboard') }}"
                                     class="nav-link {{ Route::is('pasien.dashboard') ? 'active' : '' }}">
                                     <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -194,6 +203,13 @@
                                         Dashboard
                                     </p>
                                 </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{route('pasien.teraphy')}}"
+                                class="nav-link {{ Route::is('pasien.teraphy') ? 'active' : ''}}">
+                                <i class="nav-icon"></i>
+                                <p>Terapi</p>
+                            </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::is('pasien.teraphyHistory') ? 'active' : '' }}"
@@ -324,6 +340,11 @@
     <script src="{{ asset('js/pages/dashboard.js') }}"></script> --}}
 
     <script>
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
         $(window).on('load', function() {
             setTimeout(()=>{
                 $('.alert').slideUp();

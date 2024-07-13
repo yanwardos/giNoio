@@ -46,4 +46,9 @@ class Pasien extends Model
     public function getTerapiPerkembangan() {
         return 0.7;
     }
+
+    // device
+    public function device(){
+        return $this->hasOne(Device::class, 'ownerPasienId', 'id');
+    }
 }

@@ -8,4 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Device extends Model
 {
     use HasFactory;
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'serialNumber'
+    ];
+
+    public function pasien()
+    {
+        return $this->belongsTo(Pasien::class, 'ownerPasienId', 'id');
+    }
 }

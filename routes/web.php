@@ -72,6 +72,7 @@ Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
 // Pasien
 Route::middleware(['auth', 'role:pasien'])->prefix('pasien')->group(function () {
     Route::get('/', [PasienController::class, 'index'])->name('pasien.dashboard');
+    Route::get('/terapi', [PasienController::class, 'teraphy'])->name('pasien.teraphy');
     Route::get('/grafik', [PasienController::class, 'teraphyHistory'])->name('pasien.teraphyHistory');
 });
 
@@ -88,13 +89,22 @@ Route::middleware(['auth', 'role:medis'])->prefix('medis')->group(function () {
 
     Route::get('/pasien/{pasien}/edit', [MedisController::class, 'editPasien'])->name('medis.pasienEdit');
     Route::post('/pasien/{pasien}/update', [MedisController::class, 'updatePasien'])->name('medis.pasienUpdate');
-
     Route::post('/pasien/{pasien}/delete', [MedisController::class, 'deletePasien'])->name('medis.pasienDelete');
-
     Route::post('/pasien/{pasien}/passwordReset', [MedisController::class, 'resetPassword'])->name('medis.pasienPasswordReset');
 
-    Route::get('/riwayatTerapi', [MedisController::class, 'riwayatList'])->name('medis.riwayatList');
-    Route::get('/riwayat/pasien/{pasien}', [MedisController::class, 'riwayatPasienList'])->name('medis.riwayatPasienList');
+    Route::get('/records', [MedisController::class, 'records'])->name('medis.records'); 
+    Route::get('/records/{pasien}/detail', [MedisController::class, 'recordsPasien'])->name('medis.recordsPasien'); 
+
+    Route::get('/devices', [MedisController::class, 'devices'])->name('medis.devices'); 
+    Route::get('/device/{device}/detail', [MedisController::class, 'deviceDetail'])->name('medis.device'); 
+    
+    Route::get('/device/register', [MedisController::class, 'deviceRegister'])->name('medis.deviceRegister'); 
+    Route::post('/device/create', [MedisController::class, 'deviceCreate'])->name('medis.deviceCreate'); 
+    
+    Route::get('/device/{device}/assign', [MedisController::class, 'deviceAssignPasienInterface'])->name('medis.deviceAssignPasienInterface'); 
+    Route::post('/device/assign', [MedisController::class, 'deviceAssignPasien'])->name('medis.deviceAssignPasien');
+    Route::post('/device/unassign', [MedisController::class, 'deviceUnassignPasien'])->name('medis.deviceUnassignPasien');
+
 });
 
 

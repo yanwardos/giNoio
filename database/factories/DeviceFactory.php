@@ -12,9 +12,9 @@ class DeviceFactory extends Factory
      * @return array
      */
     public function definition()
-    {
+    { 
         return [
-            //
+            'serialNumber' => $this->faker->numerify('####################')
         ];
     }
 }

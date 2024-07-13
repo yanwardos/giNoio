@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web;
 
 use App\Enum\RoleEnum;
 use App\Http\Controllers\Controller;
+use App\Models\Device;
 use App\Models\Pasien;
 use App\Models\User;
 use Carbon\Carbon;
@@ -246,13 +247,6 @@ class MedisController extends Controller
             ->with('messageSuccess', 'Berhasil mereset password.');
     }
 
-    # TODO: patient's teraphy history
-    public function patientTeraphyHistory(User $user)
-    {
-        return 'medis: patientTeraphyHistory';
-    }
-
-
     # TODO: patient store
     public function storePasien()
     {
@@ -261,14 +255,115 @@ class MedisController extends Controller
 
     // RIWAYAT
     # TODO: record index
-    public function riwayatList()
+    public function records()
     {
         $pasiens = Pasien::all();
-        return view('medis.riwayatList', compact('pasiens'));
+        return view('medis.records', compact('pasiens'));
     }
 
     # TODO: show detail riwayat
-    public function riwayatPasienList(Pasien $pasien){
+    public function recordsPasien(Pasien $pasien){
+        return view('medis.recordsPasien', compact('pasien'));
+    }
 
+    // DEVICES
+    public function devices() {
+        $devices = Device::all();
+        return view('medis.devices', compact('devices'));
+    }
+
+    public function deviceDetail(Device $device){
+        return view('medis.deviceDetail', compact('device'));
+    }
+
+    public function deviceRegister() {
+        return view('medis.deviceRegister');
+    }
+
+    public function deviceCreate(Request $request) { 
+        $validator = Validator::make($request->all(), [
+            'deviceSerial' => 'required|string|max:255|min:15',
+        ]);
+        
+        if($validator->fails()){ 
+            return redirect()
+            ->back()
+            ->withInput()
+            ->withErrors($validator->errors());
+        }
+
+        $device = new Device([
+            'serialNumber' => $request->input('deviceSerial')
+        ]);
+
+        if(!$device->save()){
+            return redirect()
+            ->back()
+            ->withInput()
+            ->withErrors([
+                'messageError' => 'Gagal menyimpan data perangkat.'
+            ]); 
+        }
+
+        return redirect(route('medis.devices'));
+    }
+    
+    public function deviceAssignPasienInterface(Device $device) {
+        $pasiens = Pasien::all();
+        
+        return view('medis.deviceAssignPasien', compact('pasiens', 'device'));
+    }
+
+    // APIS
+    public function deviceAssignPasien(Request $request) {
+        $deviceId = $request->input('deviceId');
+        $pasienId = $request->input('pasienId');
+
+        $device = Device::find($deviceId);
+        $pasien = Pasien::find($pasienId);
+
+        if(!$device || !$pasien){
+            return response()->json([
+                'message' => 'invalid input'
+            ], 422);
+        }
+
+        $device->ownerPasienId = $pasien->id;
+
+        if(!$device->save()){
+            return response()->json([
+                'message' => 'unexpected error'
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'ok'
+        ], 200);
+    }
+
+    public function deviceUnassignPasien(Request $request) {
+        $deviceId = $request->input('deviceId');
+        $pasienId = $request->input('pasienId');
+
+        $device = Device::find($deviceId);
+        $pasien = Pasien::find($pasienId);
+
+        if(!$device || !$pasien){
+            return response()->json([
+                'message' => 'invalid input'
+            ], 422);
+        }
+
+        $device->ownerPasienId = null;
+
+        if(!$device->save()){
+            return response()->json([
+                'message' => 'unexpected error'
+            ], 500);
+        }
+
+        return response()->json([
+            'message' => 'ok'
+        ], 200);
     }
 }
