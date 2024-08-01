@@ -1,0 +1,28 @@
+App 825374 output: /home/yanwardo/igoniometer.my.id/mqtt-server/index.js:6
+App 825374 output: const serverClient = mqtt.connect('mqtts://b6de8b3b.ala.asia-southeast1.emqxsl.com:8883', {
+App 825374 output:                      ^
+App 825374 output: ReferenceError: mqtt is not defined
+App 825374 output:     at Object.<anonymous> (/home/yanwardo/igoniometer.my.id/mqtt-server/index.js:6:22)
+App 825374 output:     at Module._compile (internal/modules/cjs/loader.js:778:30)
+App 825374 output:     at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+App 825374 output:     at Module.load (internal/modules/cjs/loader.js:653:32)
+App 825374 output:     at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+App 825374 output:     at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+App 825374 output:     at Module.require (internal/modules/cjs/loader.js:692:17)
+App 825374 output:     at Module.require (/opt/cpanel/ea-ruby27/root/usr/share/passenger/helper-scripts/node-loader.js:80:25)
+App 825374 output:     at require (internal/modules/cjs/helpers.js:25:18)
+App 825374 output:     at loadApplication (/opt/cpanel/ea-ruby27/root/usr/share/passenger/helper-scripts/node-loader.js:243:2)
+App 1087382 output: /home/yanwardo/igoniometer.my.id/mqtt-server/index.js:6
+App 1087382 output: const serverClient = mqtt.connect('mqtts://b6de8b3b.ala.asia-southeast1.emqxsl.com:8883', {
+App 1087382 output:                      ^
+App 1087382 output: ReferenceError: mqtt is not defined
+App 1087382 output:     at Object.<anonymous> (/home/yanwardo/igoniometer.my.id/mqtt-server/index.js:6:22)
+App 1087382 output:     at Module._compile (internal/modules/cjs/loader.js:778:30)
+App 1087382 output:     at Object.Module._extensions..js (internal/modules/cjs/loader.js:789:10)
+App 1087382 output:     at Module.load (internal/modules/cjs/loader.js:653:32)
+App 1087382 output:     at tryModuleLoad (internal/modules/cjs/loader.js:593:12)
+App 1087382 output:     at Function.Module._load (internal/modules/cjs/loader.js:585:3)
+App 1087382 output:     at Module.require (internal/modules/cjs/loader.js:692:17)
+App 1087382 output:     at Module.require (/opt/cpanel/ea-ruby27/root/usr/share/passenger/helper-scripts/node-loader.js:80:25)
+App 1087382 output:     at require (internal/modules/cjs/helpers.js:25:18)
+App 1087382 output:     at loadApplication (/opt/cpanel/ea-ruby27/root/usr/share/passenger/helper-scripts/node-loader.js:243:2)
