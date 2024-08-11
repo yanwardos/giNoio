@@ -141,18 +141,22 @@
 @section('styles') 
 @endsection
 
-@section('scripts') 
+@section('scripts')
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
     <script>
         @if ($pasien->device)
             /* jQueryKnob */
-            $('.knob').knob()
+            $('.knob').knob({
+                'min': 0,
+                'max': 360
+            })
 
             // Chart MPU
+            var mpuMaxData = 20;
             var mpuChartCanvas = $('#mpu-canvas').get(0).getContext('2d')
 
             var mpuChartData = {
                 labels: [
-                    1, 2, 3, 4, 5, 6, 7
                 ],
                 datasets: [
                     {
@@ -163,7 +167,7 @@
                         spanGaps: true,
                         borderColor: '#39cc39',
                         pointBackgroundColor: '#39cc39',
-                        data: [2666, 2778, 4912, 3767, 6810, 5670, 4820] 
+                        data: [] 
                     }, {
                         label: 'Sudut Y',
                         'fill': false,
@@ -172,7 +176,7 @@
                         spanGaps: true,
                         borderColor: '#39cccc',
                         pointBackgroundColor: '#39cccc',
-                        data: [200, 3000, 2000, 4000, 5000, 4500, 2344] 
+                        data: [] 
                     }, {
                         label: 'Sudut Z',
                         'fill': false,
@@ -181,7 +185,7 @@
                         spanGaps: true,
                         borderColor: '#cc39cc',
                         pointBackgroundColor: '#cc39cc',
-                        data: [3455, 3455, 5444, 3342, 5424, 5543, 2343] 
+                        data: [] 
                     }
                 ]
             }
@@ -231,10 +235,10 @@
             )
 
             // Chart EMG
+            var emgMaxData = 30;
             var emgChartCanvas = $('#emg-canvas').get(0).getContext('2d');
             var emgChartData = { 
                 labels: [
-                    1, 2, 3, 4, 5, 6, 7
                 ],
                 datasets: [
                     {
@@ -245,7 +249,7 @@
                         spanGaps: true,
                         borderColor: '#cc3939',
                         pointBackgroundColor: '#cc3939',
-                        data: [2666, 2778, 4912, 3767, 6810, 5670, 4820] 
+                        data: [] 
                     },
                 ]
             }
@@ -293,7 +297,69 @@
                 }
             )
 
-            
+            function addDataEMG({emg}) {
+                if(emgGraphChart.data.labels.length>=emgMaxData){
+                    emgGraphChart.data.labels.shift();
+                    emgGraphChart.data.datasets.forEach((dataset) => {
+                        dataset.data.shift();
+                    }); 
+                }
+                emgGraphChart.data.labels.push(0);
+                emgGraphChart.data.datasets.forEach((dataset) => {
+                    dataset.data.push(emg);
+                });
+
+                emgGraphChart.update();
+            }
+
+            function addDataMPU({x, y, z}){
+                if(mpuGraphChart.data.labels.length>=mpuMaxData){
+                    mpuGraphChart.data.labels.shift();
+                    mpuGraphChart.data.datasets[0].data.shift();
+                    mpuGraphChart.data.datasets[1].data.shift();
+                    mpuGraphChart.data.datasets[2].data.shift(); 
+                }
+                mpuGraphChart.data.labels.push(0);
+                mpuGraphChart.data.datasets[0].data.push(x);
+                mpuGraphChart.data.datasets[1].data.push(y);
+                mpuGraphChart.data.datasets[2].data.push(z); 
+                mpuGraphChart.update();
+
+                
+                $('#knob-x').val(`${x}%`);
+                $('#knob-y').val(`${y}%`);
+                $('#knob-z').val(`${z}%`);
+                $('.knob').trigger('change');
+            }
+
+            // data
+            const deviceSerial = '{{$pasien->device->serialNumber}}';
+            const clientId = "emqx_vue3_" + Math.random().toString(16).substring(2, 8);
+            const username = "igonio-browser-client";
+            const password = "igonio-browser-client";
+
+            const client = mqtt.connect("ws://18.143.65.61:8083/mqtt", {
+                clientId,
+                username,
+                password,
+                // ...other options
+            });
+
+            client.on('connect', ()=>{
+                client.subscribe(`device/${deviceSerial}`);
+            });
+
+            client.on('message', (topic, message)=>{
+                let payload = JSON.parse(message);
+
+                // payload.x = Math.floor((payload.x/360)*100);
+                // payload.y = Math.floor((payload.y/360)*100);
+                // payload.z = Math.floor((payload.z/360)*100);
+
+                addDataEMG({emg: payload.emg_bw})
+                addDataMPU(payload)
+            }); 
+
             var isUnassigning = false;
             $('.btn-unassign-device').click((event)=>{
                 if(isUnassigning) return;

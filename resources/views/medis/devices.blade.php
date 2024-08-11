@@ -55,6 +55,7 @@
                                         </small>
                                     </td> 
                                     <td class="col-1">
+                                        <small class="device-state" serialNumber="{{$device->serialNumber}}"></small>
                                         @switch('online')
                                             @case('online')
                                                 <small class="badge badge-success">Online</small>
@@ -101,5 +102,9 @@
                 "responsive": true,
             });
         })
+    </script>
+
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <script>
     </script>
 @endsection
