@@ -338,7 +338,7 @@
             const username = "igonio-browser-client";
             const password = "igonio-browser-client";
 
-            const client = mqtt.connect("mqtts://18.143.65.61:8084/mqtt", {
+            const client = mqtt.connect("ws://18.143.65.61:8083/mqtt", {
                 clientId,
                 username,
                 password,
