@@ -22,6 +22,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::prefix('mqtt')->group(function () {
-    Route::post('record', [MQTTController::class, 'recordStore'])->name('mqtt.record.store');
+    Route::post('record', [MQTTController::class, 'recordStore'])->middleware('throttle:12000,1')->name('mqtt.record.store');
 });
  
