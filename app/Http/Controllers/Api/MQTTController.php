@@ -16,11 +16,15 @@ class MQTTController extends Controller
 
     public function recordStore(Request $request){
         $request = $request->all([
-            'clientId',
+            'topic',
             'payload'
         ]);
 
-        $device = Device::where('serialNumber', $request['clientId'])->first();
+        $topic = explode('/', $request['topic']);
+
+        $clientId = $topic[1];
+
+        $device = Device::where('serialNumber', $clientId)->first();
 
         if(!$device){
             return response()->json([
