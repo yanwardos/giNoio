@@ -55,10 +55,10 @@
                                         <small></small>
                                     </td>
                                     <td class="col-2"> 
-                                        <a href="{{route('medis.records.pasien', $pasien)}}" class="btn btn-block btn-warning btn-xs">
+                                        <a href="{{route('medis.records.pasien', $pasien)}}" class="btn btn-block btn-secondary btn-xs">
                                             <i class="fas fa-info"></i>
                                             Detail
-                                        </a>
+                                        </a> 
                                     </td>
                                 </tr>
                             @endforeach 

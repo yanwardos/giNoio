@@ -11,6 +11,7 @@ class MonitoringRecord extends Model
     
     protected $fillable = [
         'data',
-        'deviceId'
+        'deviceId',
+        'pasienId'
     ];
 }

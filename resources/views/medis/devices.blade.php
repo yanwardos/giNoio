@@ -54,19 +54,8 @@
                                             {{$device->created_at}}
                                         </small>
                                     </td> 
-                                    <td class="col-1">
-                                        <small class="device-state" serialNumber="{{$device->serialNumber}}"></small>
-                                        @switch('online')
-                                            @case('online')
-                                                <small class="badge badge-success">Online</small>
-                                            @break
-                                    
-                                            @case('offline')
-                                                <small class="badge badge-danger">Offline</small>
-                                            @break
-                                            @default
-                                                
-                                        @endswitch
+                                    <td class="col-1"> 
+                                        <small class="badge badge-info nodeStateBadge" nodeSerial="{{$device->serialNumber}}">Offline</small>
                                     </td>
                                     <td class="col-2"> 
                                         <a href="{{route('medis.device', $device)}}" class="btn btn-block btn-warning btn-xs">
@@ -90,6 +79,7 @@
 
 @section('scripts')
     <x-datatable-js />
+    <x-mqtt-service-js />
     <script>
         $(function() {
             $('#tabelRiwayat').DataTable({
@@ -101,10 +91,27 @@
                 "autoWidth": false,
                 "responsive": true,
             });
-        })
-    </script>
 
-    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
-    <script>
+            let nodes = $('.nodeStateBadge');
+            if(nodes){
+                nodes.each((idx, elem)=>{
+                    let serialNum = $(elem).attr('nodeSerial');
+                    nodes[idx].mq = new DeviceNode({
+                        mqttClient: window._mqclient,
+                        nodeSerial: serialNum,
+                        onDataReceivedCallback: (m)=>{
+                            $(elem).text('Online');
+                            $(elem).removeClass('badge-info');
+                            $(elem).addClass('badge-success');
+                        },
+                        onOfflineCallback: ()=>{
+                            $(elem).text('Offline');
+                            $(elem).removeClass('badge-success');
+                            $(elem).addClass('badge-info');
+                        }
+                    });
+                })
+            }
+        })
     </script>
 @endsection

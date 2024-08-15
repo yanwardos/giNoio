@@ -14,9 +14,11 @@ class PasienController extends Controller
     }
 
     # TODO: my teraphy history
-    public function teraphyHistory()
+    public function teraphyHistory(Request $request)
     {
-        return view('pasien.riwayatList');
+        $user = $request->user();
+        $pasien = $user->getPasien();
+        return view('pasien.riwayatList', compact('pasien'));
     }
 
     # TODO: halaman terapi pasien

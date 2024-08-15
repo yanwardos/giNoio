@@ -17,9 +17,11 @@ class CreateMonitoringRecordsTable extends Migration
             $table->id();
             $table->timestamps();
             $table->unsignedBigInteger('deviceId');
+            $table->unsignedBigInteger('pasienId');
             $table->json('data');
 
             $table->foreign('deviceId')->references('id')->on('devices');
+            $table->foreign('pasienId')->references('id')->on('pasiens');
         });
     }
 

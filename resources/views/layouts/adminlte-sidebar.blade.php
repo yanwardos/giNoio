@@ -206,12 +206,12 @@
                                     </p>
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a href="{{route('pasien.teraphy')}}"
                                 class="nav-link {{ Route::is('pasien.teraphy') ? 'active' : ''}}">
                                 <i class="nav-icon"></i>
                                 <p>Terapi</p>
-                            </a>
+                            </a> --}}
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::is('pasien.teraphyHistory') ? 'active' : '' }}"
@@ -224,13 +224,12 @@
  
                         <li class="nav-header">SISTEM</li>
                             <li class="nav-item">
-                                <a class="nav-link
-                                    {{Route::is('myProfile')? 'active' : ''}} 
-                                    {{Route::is('myProfile.edit')? 'active' : ''}}
-                                    " 
+                                <a class="nav-link {{Route::is('myProfile*')? 'active' : ''}}"
                                 href="{{route('myProfile')}}">
                                     <i class="fas fa-user nav-icon"></i>
-                                    Profil
+                                    <p>
+                                        Profil
+                                    </p>
                                 </a>
                             </li>
                         @auth 

@@ -86,20 +86,14 @@
                 </div>
                 <div class="card-body shadow d-flex flex-column"> 
                     <div class="row">
-                        <div class="col-2 col-lg-2 small-box bg-info mr-1">
+                        <div class="col-2 col-lg-2 small-box bg-info mr-1 small-box-status">
                             <div class="inner">
-                                <h4>
-                                    Online
+                                <h4 class="small-box-status-text">
+                                    Offline
                                 </h4> 
                                 <p>Status</p>
                             </div>  
-                        </div>
-                        <div class="col-2 small-box bg-info mr-1">
-                            <div class="inner">
-                                <h4>150<sup>h</sup></h4> 
-                                <p>Uptime</p>
-                            </div>  
-                        </div>
+                        </div> 
                     </div>
                     <div class="">
                         <table class="table table-sm table-secondary font-weight-light">
@@ -131,6 +125,25 @@
 @endsection
 
 @section('scripts') 
-<script> 
+<x-mqtt-service-js />
+<script>
+    
+    if (window._mqclient) { 
+        let nodeSerial = '{{ $device->serialNumber }}';
+        new DeviceNode({
+            mqttClient: window._mqclient,
+            nodeSerial: nodeSerial,
+            onDataReceivedCallback: (m)=>{
+                $('.small-box-status-text').text('Online');
+                $('.small-box-status').removeClass('bg-info');
+                $('.small-box-status').addClass('bg-success');
+            },
+            onOfflineCallback: ()=>{
+                $('.small-box-status-text').text('Offline');
+                $('.small-box-status').removeClass('bg-success');
+                $('.small-box-status').addClass('bg-info');
+            }
+        });
+    }
 </script>
 @endsection

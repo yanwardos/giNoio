@@ -25,16 +25,24 @@ class MQTTController extends Controller
         $clientId = $topic[1];
 
         $device = Device::where('serialNumber', $clientId)->first();
-
+        
         if(!$device){
             return response()->json([
                 'status' => 'error',
                 'message' => 'Device not found' 
             ], 404);
         }
+        
+        if(!$device->pasien){
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Device has no patient' 
+            ], 404); 
+        }
 
         $record = new MonitoringRecord([
             'deviceId' => $device->id,
+            'pasienId' => $device->pasien->id,
             'data' => json_encode($request['payload'])
         ]);
 
