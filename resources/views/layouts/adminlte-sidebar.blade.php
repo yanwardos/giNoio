@@ -45,7 +45,7 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
-    <div class="wrapper">
+    <div class="wrapper" id="app">
 
 
         <!-- Navbar -->
@@ -171,7 +171,9 @@
                             </li>
                             <li class="nav-header">MONITORING</li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Route::is('medis.records.allPasien') ? 'active' : '' }}"
+                                <a class="nav-link {{ 
+                                        Route::is('medis.records.*') ? 'active' : '' 
+                                    }}"
                                     href="{{ route('medis.records.allPasien') }}">
                                     <i class="fas fa-history nav-icon"></i>
                                     <p>Data Pasien</p>
@@ -299,7 +301,6 @@
         </footer>
 
     </div>
-    <!-- ./wrapper -->
 
     <!-- jQuery -->
     <script src="{{ asset('plugins/jquery/jquery.min.js') }}"></script>
@@ -309,8 +310,10 @@
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
+    
     <!-- Bootstrap 4 -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+
     <!-- ChartJS -->
     <script src="{{ asset('plugins/chart.js/Chart.min.js') }}"></script>
     <!-- Sparkline -->
@@ -329,9 +332,14 @@
     <script src="{{ asset('plugins/summernote/summernote-bs4.min.js') }}"></script>
     <!-- overlayScrollbars -->
     <script src="{{ asset('plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+
+    <!-- ./wrapper -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
     <!-- AdminLTE App -->
     <script src="{{ asset('js/adminlte.js') }}"></script>
 
+    
     @yield('scripts')
     {{--
     <!-- AdminLTE for demo purposes -->

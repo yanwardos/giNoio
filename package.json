@@ -20,9 +20,12 @@
         "postcss": "^8.1.14",
         "resolve-url-loader": "^5.0.0",
         "sass": "^1.32.11",
-        "sass-loader": "^11.0.1"
+        "sass-loader": "^11.0.1",
+        "vue": "^3.4.37",
+        "vue-loader": "^16.8.3"
     },
     "dependencies": {
-        "admin-lte": "^3.2.0"
+        "admin-lte": "^3.2.0",
+        "mqtt": "^5.9.1"
     }
 }

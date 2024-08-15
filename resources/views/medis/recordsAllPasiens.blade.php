@@ -47,8 +47,9 @@
                                     <td class="col-6">{{$pasien->user->name}}</td>
                                     <td class="col-3">
                                         @if(!$pasien->device)
-                                            <small class="badge badge-warning">Data tidak tersedia</small>
+                                            <small class="badge badge-warning">Belum memiliki perangkat.</small>
                                         @else
+                                            <small class="badge badge-info nodeStateBadge" nodeSerial={{$pasien->device->serialNumber}}>offline</small>
                                         @endif
 
                                         <small></small>
@@ -75,6 +76,7 @@
 
 @section('scripts')
     <x-datatable-js />
+    <x-mqtt-service-js />
     <script>
         $(function() {
             $('#tabelRiwayat').DataTable({
@@ -86,6 +88,29 @@
                 "autoWidth": false,
                 "responsive": true,
             });
+            
+            let nodes = $('.nodeStateBadge');
+
+            if(nodes){
+                nodes.each((idx, elem)=>{
+                    let serialNum = $(elem).attr('nodeSerial');
+                    nodes[idx].mq = new DeviceNode({
+                        mqttClient: window._mqclient,
+                        nodeSerial: serialNum,
+                        onDataReceivedCallback: (m)=>{
+                            $(elem).text('Online');
+                            $(elem).removeClass('badge-info');
+                            $(elem).addClass('badge-success');
+                        },
+                        onOfflineCallback: ()=>{
+                            $(elem).text('Offline');
+                            $(elem).removeClass('badge-success');
+                            $(elem).addClass('badge-info');
+                        }
+                    });
+                })
+            }
+            
         })
     </script>
 @endsection
