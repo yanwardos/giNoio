@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Web;
 use App\Enum\RoleEnum;
 use App\Http\Controllers\Controller;
 use App\Models\Device;
+use App\Models\MonitoringRecord;
 use App\Models\Pasien;
 use App\Models\User;
 use Carbon\Carbon;
@@ -258,7 +259,11 @@ class MedisController extends Controller
 
     # TODO: show detail riwayat
     public function recordsPasien(Pasien $pasien){
-        return view('medis.recordPasien', compact('pasien'));
+        $records = MonitoringRecord::where(['pasienId'=>$pasien->id])->get();
+        foreach ($records as $record) {
+            $record->data = json_decode($record->data);
+        }
+        return view('medis.recordPasien', compact('pasien', 'records'));
     }
 
     // DEVICES

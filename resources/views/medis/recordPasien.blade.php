@@ -149,6 +149,43 @@
                         </h3>
                     </div>
                     <div class="card-body shadow">
+                        <table id="tabelDataMonitoring" class="table table-bordered table-hover">
+                            <thead>
+                                <tr>
+                                    <th class="col-1">No</th>
+                                    <th class="col-4">Nilai MPU</th>
+                                    <th class="col-4">Nilai EMG</th>
+                                    <th class="col-3">Waktu Data</th> 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @php
+                                    $no = 1;
+                                @endphp
+                                @foreach ($records as $record) 
+                                    <tr>
+                                        <td>
+                                            {{$no}}
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-info badge-pill py-1 px-2">
+                                                X: {{$record->data->x}} | Y: {{$record->data->y}} | Z: {{$record->data->z}}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-info badge-pill py-1 px-2">
+                                                {{$record->data->emg_bw}}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <small>
+                                                {{$record->created_at}}
+                                            </small>
+                                        </td>
+                                    </tr>
+                                @endforeach 
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -157,66 +194,80 @@
 @endsection
 
 @section('styles')
+<x-datatable-css />
 @endsection
 
 @section('scripts')
+    <x-datatable-js />
     <x-mqtt-service-js />
     <script src="{{ asset('js/chartDriver.js') }}"></script>
     <script>
-        @if ($pasien->device)
-            let nodeSerial = '{{ $pasien->device->serialNumber }}';
-
-            let mqtNodeMessageHandler = (message) => {
-                let payload = JSON.parse(message);
-                addDataMPU(payload);
-                addDataEMG(payload);
-            }
-
-            if (window._mqclient) { 
-                new DeviceNode({
-                    mqttClient: window._mqclient,
-                    nodeSerial: nodeSerial,
-                    onDataReceivedCallback: (m)=>{
-                        $('.small-box-status-text').text('Online');
-                        $('.small-box-status').removeClass('bg-info')
-                        $('.small-box-status').addClass('bg-success')
-                        mqtNodeMessageHandler(m);
-                    },
-                    onOfflineCallback: ()=>{
-                        $('.small-box-status-text').text('Offline');
-                        $('.small-box-status').removeClass('bg-success')
-                        $('.small-box-status').addClass('bg-info')
-                    }
-                });
-            }
-
-            /* jQueryKnob */
-            $('.knob').knob({
-                'min': 0,
-                'max': 360
-            })
-
-            var isUnassigning = false;
-            $('.btn-unassign-device').click((event) => {
-                if (isUnassigning) return;
-                isUnassigning = true;
-                var pasienId = $(event.target).attr('pasien-id');
-
-                $.ajax({
-                    url: "{{ route('medis.pasien.unassignDevice.store') }}",
-                    method: 'POST',
-                    data: {
-                        pasienId: pasienId,
-                    },
-                    success: (response) => {
-                        isUnassigning = false;
-                        window.location.replace("{{ route('medis.records.pasien', $pasien->id) }}");
-                    },
-                    error: (jqXHR, textStatus, errorThrown) => {
-                        isUnassigning = false;
-                    }
+        $(function() {
+            $('#tabelDataMonitoring').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+            });
+            @if ($pasien->device)
+                let nodeSerial = '{{ $pasien->device->serialNumber }}';
+    
+                let mqtNodeMessageHandler = (message) => {
+                    let payload = JSON.parse(message);
+                    addDataMPU(payload);
+                    addDataEMG(payload);
+                }
+    
+                if (window._mqclient) { 
+                    new DeviceNode({
+                        mqttClient: window._mqclient,
+                        nodeSerial: nodeSerial,
+                        onDataReceivedCallback: (m)=>{
+                            $('.small-box-status-text').text('Online');
+                            $('.small-box-status').removeClass('bg-info')
+                            $('.small-box-status').addClass('bg-success')
+                            mqtNodeMessageHandler(m);
+                        },
+                        onOfflineCallback: ()=>{
+                            $('.small-box-status-text').text('Offline');
+                            $('.small-box-status').removeClass('bg-success')
+                            $('.small-box-status').addClass('bg-info')
+                        }
+                    });
+                }
+    
+                /* jQueryKnob */
+                $('.knob').knob({
+                    'min': 0,
+                    'max': 360
                 })
-            })
-        @endif
+    
+                var isUnassigning = false;
+                $('.btn-unassign-device').click((event) => {
+                    if (isUnassigning) return;
+                    isUnassigning = true;
+                    var pasienId = $(event.target).attr('pasien-id');
+    
+                    $.ajax({
+                        url: "{{ route('medis.pasien.unassignDevice.store') }}",
+                        method: 'POST',
+                        data: {
+                            pasienId: pasienId,
+                        },
+                        success: (response) => {
+                            isUnassigning = false;
+                            window.location.replace("{{ route('medis.records.pasien', $pasien->id) }}");
+                        },
+                        error: (jqXHR, textStatus, errorThrown) => {
+                            isUnassigning = false;
+                        }
+                    })
+                })
+            @endif
+        })
+        
     </script>
 @endsection
