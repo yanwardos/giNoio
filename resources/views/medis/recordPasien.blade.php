@@ -174,7 +174,7 @@
                                         </td>
                                         <td>
                                             <span class="badge bg-info badge-pill py-1 px-2">
-                                                {{$record->data->emg_bw}}
+                                                {{$record->data->emg}}
                                             </span>
                                         </td>
                                         <td>
