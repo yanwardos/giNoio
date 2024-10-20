@@ -169,17 +169,17 @@
                                         </td>
                                         <td>
                                             <span class="badge bg-info badge-pill py-1 px-2">
-                                                X: {{$record->data->x}} | Y: {{$record->data->y}} | Z: {{$record->data->z}}
+                                                X: {{$record->data->x ?? '-'}} | Y: {{$record->data->y ?? '-'}} | Z: {{$record->data->z ?? '-'}}
                                             </span>
                                         </td>
                                         <td>
                                             <span class="badge bg-info badge-pill py-1 px-2">
-                                                {{$record->data->emg}}
+                                                {{$record->data->emg ?? '-'}}
                                             </span>
                                         </td>
                                         <td>
                                             <small>
-                                                {{$record->created_at}}
+                                                {{$record->created_at ?? '-'}}
                                             </small>
                                         </td>
                                     </tr>

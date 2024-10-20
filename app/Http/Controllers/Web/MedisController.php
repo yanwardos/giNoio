@@ -263,10 +263,13 @@ class MedisController extends Controller
 
     # TODO: show detail riwayat
     public function recordsPasien(Pasien $pasien){
+        
         $records = MonitoringRecord::where(['pasienId'=>$pasien->id])->get();
         foreach ($records as $record) {
             $record->data = json_decode($record->data);
         }
+        var_dump($records[0]->data);
+        // return;
         return view('medis.recordPasien', compact('pasien', 'records'));
     }
 
