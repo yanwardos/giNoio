@@ -2,7 +2,7 @@
 deployment:
       tasks:
         - export DEPLOYPATH=/home/yanwardo/igoniometer.my.id
-        - cd $DEPLOYPATH
+        - cd $DEPLOYPATH 
         - php artisan migrate:fresh
         - php artisan db:seed
         - rm -r storage/app/avatar
