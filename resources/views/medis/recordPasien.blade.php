@@ -15,7 +15,9 @@
                     <li class="breadcrumb-item">
                         <a href="{{ route('medis.dashboard') }}">Dashboard</a>
                     </li>
-                    <li class="breadcrumb-item active">Monitoring</li>
+                    <li class="breadcrumb-item active">
+                        <a href="{{ route('medis.records.pasien.all') }}">Data Monitoring</a>
+                    </li>
                 </ol>
             </div><!-- /.col -->
         </div><!-- /.row -->

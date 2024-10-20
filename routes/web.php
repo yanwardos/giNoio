@@ -92,7 +92,7 @@ Route::middleware(['auth', 'role:medis'])->prefix('medis')->group(function () {
     Route::post('/pasien/{pasien}/delete', [MedisController::class, 'pasienDelete'])->name('medis.pasien.delete');
     Route::post('/pasien/{pasien}/passwordReset', [MedisController::class, 'resetPassword'])->name('medis.pasien.password.reset');
 
-    Route::get('/pasiens/records', [MedisController::class, 'recordsAllPasiens'])->name('medis.records.allPasien'); 
+    Route::get('/pasiens/records', [MedisController::class, 'recordsAllPasiens'])->name('medis.records.pasien.all'); 
     Route::get('/pasien/{pasien}/records/live', [MedisController::class, 'recordsPasien'])->name('medis.records.pasien');
 
     Route::get('/devices', [MedisController::class, 'devices'])->name('medis.devices'); 

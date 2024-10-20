@@ -174,7 +174,7 @@
                                 <a class="nav-link {{ 
                                         Route::is('medis.records.*') ? 'active' : '' 
                                     }}"
-                                    href="{{ route('medis.records.allPasien') }}">
+                                    href="{{ route('medis.records.pasien.all') }}">
                                     <i class="fas fa-history nav-icon"></i>
                                     <p>Data Pasien</p>
                                 </a>
