@@ -22,7 +22,11 @@ class MedisController extends Controller
     # TODO: medis dashboard
     public function index()
     {
-        return view('medis.dashboard');
+        $jumlahPasien = Pasien::count();
+        $jumlahPasienLaki = Pasien::where('gender', 1)->count();
+        $jumlahPasienPerempuan = Pasien::where('gender', 0)->count();
+
+        return view('medis.dashboard', compact('jumlahPasien', 'jumlahPasienLaki', 'jumlahPasienPerempuan'));
     }
 
     // PASIEN
@@ -54,7 +58,7 @@ class MedisController extends Controller
             'email' => $request->input('inpEmail'),
             'role_id' => RoleEnum::PASIEN,
             'email_verified_at' => now(),
-            'password' => $request->input('inpName'), // password
+            'password' => config('igoniometer.user_default_password'), // password
             'remember_token' => Str::random(10),
         ]);
 

@@ -27,37 +27,40 @@
                 <div class="col-3">
                     <article class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
-                            <h3p>Jumlah Pasien</h3p>
+                            <h3>
+                                {{$jumlahPasien}}
+                            </h3>
+                            <p>Total Pasien</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div> 
                     </article>
                 </div>
                 <div class="col-3">
                     <article class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
-                            <h3p>Jumlah Pasien</h3p>
+                            <h3>
+                                {{$jumlahPasienLaki}}
+                            </h3>
+                            <p>Pasien Laki-laki</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div> 
                     </article>
                 </div>
                 <div class="col-3">
                     <article class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
-                            <h3p>Jumlah Pasien</h3p>
+                            <h3>
+                                {{$jumlahPasienPerempuan}}
+                            </h3>
+                            <p>Pasien Perempuan</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div> 
                     </article>
                 </div>
             </div>

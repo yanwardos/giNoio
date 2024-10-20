@@ -16,10 +16,13 @@
         <div class="mt-3 m-md-2 content-home">
             <h1 class="fw-bold h2 hhh mb-3">Halo! Selamat datang</h1>
             <h2 class="fw-bold display-4 mb-3">Periksa Keberhasilan Terapi Anda!</h2>
-            <p class="h3 fw-light">
+            <p class="h3 fw-light mb-3">
                 Hidupkan kembali harapan, ukur kemajuan perjalanan anda menuju pemulihan stroke dipandau dengan
                 tepat.
             </p>
+            @if (Route::has('login'))
+                <a class="btn btn-success" href="{{ route('login') }}">{{ __('Login') }}</a>
+            @endif
         </div>
     </div>
     {{-- TODO: tambahin Service --}}
@@ -50,4 +53,13 @@
 
         </div>
     </div>
+@endsection
+
+@section('styles')
+<style>
+    body{
+        background: rgb(255,255,255);
+        background: linear-gradient(0deg, rgba(255,255,255,1) 50%, rgba(122,196,100,1) 100%);
+    }
+</style>
 @endsection

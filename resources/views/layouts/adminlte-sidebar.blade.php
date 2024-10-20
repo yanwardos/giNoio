@@ -156,7 +156,7 @@
                             </li>
                             <li class="nav-header">PASIEN</li>
                             <li class="nav-item">
-                                <a class="nav-link {{ Route::is('medis.pasien.list')||Route::is('medis.pasienShow')||Route::is('medis.pasienEdit') ? 'active' : '' }}"
+                                <a class="nav-link {{ Route::is('medis.pasien.list')||Route::is('medis.pasien.show')||Route::is('medis.pasien.edit') ? 'active' : '' }}"
                                     href="{{ route('medis.pasien.list') }}">
                                     <i class="fas fa-users nav-icon"></i>
                                     <p>Seluruh Pasien</p>

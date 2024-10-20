@@ -49,7 +49,7 @@ class MQTTController extends Controller
         if(!$record->save()){
             return response()->json([
                 'status' => 'error',
-                'message' => 'Faile saving record'
+                'message' => 'Failed saving record'
             ], 500);
         } 
         return response()->json([

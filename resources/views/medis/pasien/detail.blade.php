@@ -53,7 +53,7 @@
                         <div class="col-8">
                             <table class="table table-borderless ">
                                 <tr>
-                                    <th>Nama</th>
+                                    <th class="col-4">Nama</th>
                                     <td>{{$pasien->user->name}}</td>
                                 </tr>
                                 <tr>
@@ -155,8 +155,12 @@
                     <br>
                     <strong>{{$pasien->user->name}}</strong>
                     <br>
-                    Password default adalah: <strong>{{
-                        env('USER_DEFAULT_PASSWORD')}}
+                    Password default adalah:
+                    <br>
+                    <strong>
+                        {{
+                            config('igoniometer.user_default_password')
+                        }}
                     </strong>
                 </p>
             </div>
