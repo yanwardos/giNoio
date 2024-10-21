@@ -54,9 +54,7 @@ class GeneralUserController extends Controller
 
     public function profileUpdateAvatar(Request $request){
         $user = $request->user();
-        if(!$request->hasFile('imgAvatar')){ 
-            echo "ea";
-            return;
+        if(!$request->hasFile('imgAvatar')){  
             return false;
         }
 
@@ -100,8 +98,6 @@ class GeneralUserController extends Controller
         // save filepath to user
         $user->avatar = $filenameWithExt;
         if(!$user->save()){
-            return false;
-
             return redirect()
             ->to(route('myProfile.edit'))
             ->with('messageSuccess', 'Failed saving user data.');  

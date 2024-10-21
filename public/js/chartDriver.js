@@ -168,8 +168,8 @@ var emgGraphChart = new Chart(
     }
 )
 
-function addDataEMG({emg_ma}) {
-    emg = emg_ma; 
+function addDataEMG({emg}) {
+    emg = emg; 
     
     if(emgGraphChart.data.labels.length>=emgMaxData){
         emgGraphChart.data.labels.shift();
