@@ -183,4 +183,9 @@ function addDataEMG({emg}) {
     });
 
     emgGraphChart.update();
+
+    emg = (emg / 3.3 ) * 100;
+
+    emg = emg + '%';
+    $('#progress-emg').css({'height': emg})
 }

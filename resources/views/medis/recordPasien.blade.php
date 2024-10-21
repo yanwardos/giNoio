@@ -130,7 +130,7 @@
                                         <div class="d-flex flex-column justify-content-center align-items-center m-2">
                                             <div class="progress vertical active">
                                                 <div id="progress-emg" class="progress-bar progress-bar-striped progress-bar-animated"
-                                                    role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"
+                                                    role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"
                                                     style="height: 10%" style="background-color: #cc3939!important;">
                                                 </div>
                                             </div>
