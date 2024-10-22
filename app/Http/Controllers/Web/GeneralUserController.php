@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Enum\RoleEnum;
 use App\Http\Controllers\Auth\LoginController;
 use Carbon\Carbon;
+use Illuminate\Support\Env;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -30,7 +31,7 @@ class GeneralUserController extends Controller
 
     // profile update
     public function updateMyProfile(Request $request) {
-        // $this->profileUpdateAvatar($request);
+        $this->profileUpdateAvatar($request);
         // return;
         switch ($request->user()->role->id) {
             case RoleEnum::ADMIN->id():
@@ -59,12 +60,11 @@ class GeneralUserController extends Controller
             return false;
         }
 
-        
         // try to move file
         $fileExt = $request->file('imgAvatar')->getClientOriginalExtension();
         $filenameHash = uniqid("avatar_".time());
         $filenameWithExt = $filenameHash.'.'.$fileExt;
- 
+         
         // check folder
         if(!File::isDirectory(env('PATH_USER_AVATAR'))){
             File::makeDirectory(env('PATH_USER_AVATAR'));
@@ -79,7 +79,6 @@ class GeneralUserController extends Controller
                 ->with('messageSuccess', 'Failed storing file.');
  
         }
-
 
         // delete previous file 
         if($user->avatar){
