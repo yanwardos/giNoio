@@ -54,13 +54,13 @@ Route::middleware(['auth'])->group(function () {
         return redirect(auth()->user()->role->name);
     })->name('dashboard');
 
-    Route::get('myProfile', [GeneralUserController::class, 'showMyProfile'])->name('myProfile');
+    Route::get('profile', [GeneralUserController::class, 'showMyProfile'])->name('profile');
 
-    Route::get('myProfile/edit', [GeneralUserController::class, 'editMyProfile'])->name('myProfile.edit');
-    Route::post('myProfile/update', [GeneralUserController::class, 'updateMyProfile'])->name('myProfile.update');
+    Route::get('profile/edit', [GeneralUserController::class, 'editMyProfile'])->name('profile.edit');
+    Route::post('profile/update', [GeneralUserController::class, 'updateMyProfile'])->name('profile.update');
 
-    Route::get('myPassword/edit', [GeneralUserController::class, 'editMyPassword'])->name('profile.password.edit');
-    Route::post('myPassword/update', [GeneralUserController::class, 'updateMyPassword'])->name('profile.password.update');
+    Route::get('password/edit', [GeneralUserController::class, 'editMyPassword'])->name('profile.password.edit');
+    Route::post('password/update', [GeneralUserController::class, 'updateMyPassword'])->name('profile.password.update');
 
 });
 

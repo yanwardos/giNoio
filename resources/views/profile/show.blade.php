@@ -31,7 +31,7 @@
                         <span class="h6">Data Profil</span>
                     </div>
                     <div class="card-tools">
-                        <a href="{{route('myProfile.edit')}}" class="btn btn-info btn-sm">
+                        <a href="{{route('profile.edit')}}" class="btn btn-info btn-sm">
                             <i class="fas fa-edit"></i>
                             Edit
                         </a>

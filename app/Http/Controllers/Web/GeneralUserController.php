@@ -75,7 +75,7 @@ class GeneralUserController extends Controller
             // return false;
 
             return redirect()
-                ->to(route('myProfile.edit'))
+                ->to(route('profile.edit'))
                 ->with('messageSuccess', 'Failed storing file.');
  
         }
@@ -89,7 +89,7 @@ class GeneralUserController extends Controller
                     return false;
 
                     return redirect()
-                    ->to(route('myProfile.edit'))
+                    ->to(route('profile.edit'))
                     ->with('messageSuccess', 'Failed deleting old avatar.'); 
                 }
             }
@@ -99,7 +99,7 @@ class GeneralUserController extends Controller
         $user->avatar = $filenameWithExt;
         if(!$user->save()){
             return redirect()
-            ->to(route('myProfile.edit'))
+            ->to(route('profile.edit'))
             ->with('messageSuccess', 'Failed saving user data.');  
         }
 
@@ -161,7 +161,7 @@ class GeneralUserController extends Controller
         try {
             DB::commit();
             return redirect()
-                ->to(route('myProfile.edit'))
+                ->to(route('profile.edit'))
                 ->with('messageSuccess', 'Berhasil mengupdate data profil.');
         } catch (\Throwable $th) {
             return redirect()
@@ -207,7 +207,7 @@ class GeneralUserController extends Controller
         try {
             DB::commit();
             return redirect()
-                ->to(route('myProfile.edit'))
+                ->to(route('profile.edit'))
                 ->with('messageSuccess', 'Berhasil mengupdate data profil.');
         } catch (\Throwable $th) {
             return redirect()
@@ -218,7 +218,6 @@ class GeneralUserController extends Controller
             ]); 
         }
     }
-
 
     // password edit page
     public function editMyPassword() {
@@ -262,7 +261,7 @@ class GeneralUserController extends Controller
         }
         
         return redirect()
-            ->to(route('myProfile.edit'))
+            ->to(route('profile.edit'))
             ->with('messageSuccess', 'Berhasil mengupdate password.');
     }
 }

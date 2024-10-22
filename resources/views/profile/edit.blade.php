@@ -16,7 +16,7 @@
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active">
-                        <a href="{{ route('myProfile') }}">Profil saya</a>
+                        <a href="{{ route('profile') }}">Profil saya</a>
                     </li>
                     <li class="breadcrumb-item active">Perbarui</li>
                 </ol>
@@ -30,7 +30,7 @@
 
     <div class="container-fluid">
         <div class="col-12 col-lg-10 col-xl-8 d-flex flex-column p-2">
-            <form action="{{ route('myProfile.update') }}" method="post" enctype="multipart/form-data" novalidate>
+            <form action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data" novalidate>
                 @csrf
                 <div class="card bg-gray-light">
                     <div class="card-header">
@@ -136,7 +136,7 @@
                             <div class="col-4">
                                 <div class="row">
                                     <div class="col-12 mb-3 ">
-                                        <img class="img img-fluid" src="{{ $user->getAvatar() }}" alt="">
+                                        <img class="img img-fluid" id="imgAvatarShow" src="{{ $user->getAvatar() }}" alt="">
                                     </div>
                                     <div class="col-12">
                                         <div class="mb-2">
@@ -208,19 +208,37 @@
     {{-- <script src="{{asset('plugins/dropzone/dropzone.js')}}"/> --}}
     <script src="{{ asset('plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
     <script>
-        @pasien
-        //Date picker
-        $('#born-date').datetimepicker({
-            format: 'DD/MM/YYYY',
-            viewDate: '{{ $user->getPasien()->born }}'
-        });
+        
+        $(document).ready(function(){
+            @pasien
+            //Date picker
+            $('#born-date').datetimepicker({
+                format: 'DD/MM/YYYY',
+                viewDate: '{{ $user->getPasien()->born }}'
+            });
+    
+            $('#born-date-field').val('{{ $user->getPasien()->born() }}')
+            @endpasien
+    
+            $(function() {
+                bsCustomFileInput.init();
+            });
 
-        $('#born-date-field').val('{{ $user->getPasien()->born() }}')
-        @endpasien
+            var fileInput = $('#imgAvatar');
+            var imagePreview = $('#imgAvatarShow');
+            fileInput.on('change', (event)=>{
+                const file = event.target.files[0];  // Get the selected file
+                if (file) {
+                    const reader = new FileReader();  // Create a FileReader object
 
-        $(function() {
-            bsCustomFileInput.init();
-        });
+                    reader.onload = function(e) {
+                        $(imagePreview).attr('src', e.target.result);
+                    };
+
+                    reader.readAsDataURL(file);  // Read the file as a data URL
+                }
+            });
+        })
     </script>
 
 @endsection

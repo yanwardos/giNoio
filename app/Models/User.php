@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
 use App\Models\Role;
-use Facade\FlareClient\Stacktrace\File;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
@@ -81,8 +81,10 @@ class User extends Authenticatable
     public function getAvatar(){
         if(!isset($this->avatar)) return "https://via.placeholder.com/350x450";
         if(is_null($this->avatar)) return "https://via.placeholder.com/350x450";
+        $oldAvatarPath = env('PATH_USER_AVATAR').'/'.$this->avatar;
 
-        return url(env('PATH_USER_AVATAR').'/'.$this->avatar);
-        // return Storage::get(env('PATH_USER_AVATAR').'avatar/'.$this->avatar); 
+        if(!File::exists($oldAvatarPath)) return "https://via.placeholder.com/350x450";
+
+        return url(env('PATH_USER_AVATAR').'/'.$this->avatar); 
     }
 }

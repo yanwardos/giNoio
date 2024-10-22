@@ -16,7 +16,7 @@
                         <a href="{{ route('dashboard') }}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active">
-                        <a href="{{ route('myProfile') }}">Profil saya</a>
+                        <a href="{{ route('profile') }}">Profil saya</a>
                     </li>
                     <li class="breadcrumb-item active">Ganti Password</li>
                 </ol>

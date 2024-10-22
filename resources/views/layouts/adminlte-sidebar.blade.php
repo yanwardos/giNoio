@@ -125,7 +125,7 @@
                 @auth
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
-                            <img src="https://placehold.co/160" class="img-circle elevation-2" alt="User Image">
+                            <img src="{{auth()->user()->getAvatar()}}" class="img-circle elevation-2" alt="User Image" style="height: 40px; width: 40px; object-fit:cover">
                         </div>
                         <div class="info">
                             <a href="#" class="d-block">
@@ -224,8 +224,8 @@
  
                         <li class="nav-header">SISTEM</li>
                             <li class="nav-item">
-                                <a class="nav-link {{Route::is('myProfile*')? 'active' : ''}}"
-                                href="{{route('myProfile')}}">
+                                <a class="nav-link {{Route::is('profile*')? 'active' : ''}}"
+                                href="{{route('profile')}}">
                                     <i class="fas fa-user nav-icon"></i>
                                     <p>
                                         Profil
