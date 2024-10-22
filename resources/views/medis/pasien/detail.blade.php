@@ -66,15 +66,15 @@
                                 </tr>
                                 <tr>
                                     <th>Usia</th>
-                                    <td>{{$pasien->age()}}</td>
+                                    <td>{{$pasien->age()}} <strong>tahun</strong></td>
                                 </tr>
                                 <tr>
                                     <th>Berat Badan</th>
-                                    <td>{{$pasien->weight}}</td>
+                                    <td>{{$pasien->weight}} <strong>kg</strong></td>
                                 </tr>
                                 <tr>
                                     <th>Tinggi Badan</th>
-                                    <td>{{$pasien->height}}</td>
+                                    <td>{{$pasien->height}} <strong>cm</strong></td>
                                 </tr>
                                 <tr>
                                     <th>Riwayat Penyakit</th>

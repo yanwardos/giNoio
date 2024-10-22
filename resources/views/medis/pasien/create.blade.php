@@ -104,25 +104,35 @@
                                     <tr>
                                         <th><label for="inpWeight">Berat Badan</label></th>
                                         <td>
-                                            <input class="form-control @error('inpWeight') is-invalid @enderror" type="number" name="inpWeight" id="inpWeight" 
-                                            value="@if (old('inpWeight')){{old('inpWeight')}}@endif">
-                                            @error('inpWeight')
-                                                <div id="inpWeightFeedback" class="invalid-feedback">
-                                                    {{$message}}
+                                            <div class="input-group">
+                                                <input class="form-control @error('inpWeight') is-invalid @enderror" type="number" name="inpWeight" id="inpWeight" 
+                                                value="@if (old('inpWeight')){{old('inpWeight')}}@endif">
+                                                <div class="input-group-append" data-target="#born-date" data-toggle="datetimepicker">
+                                                    <div class="input-group-text">Kg</div>
                                                 </div>
-                                            @enderror
+                                                @error('inpWeight')
+                                                    <div id="inpWeightFeedback" class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                                @enderror
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>
                                         <th><label for="inpHeight">Tinggi Badan</label></th>
                                         <td> 
-                                            <input class="form-control @error('inpHeight') is-invalid @enderror" type="number" name="inpHeight" id="inpHeight"
-                                            value="@if (old('inpHeight')){{old('inpHeight')}}@endif"> 
-                                            @error('inpHeight')
-                                                <div id="inpHeightFeedback" class="invalid-feedback">
-                                                    {{$message}}
+                                            <div class="input-group">
+                                                <input class="form-control @error('inpHeight') is-invalid @enderror" type="number" name="inpHeight" id="inpHeight"
+                                                value="@if (old('inpHeight')){{old('inpHeight')}}@endif"> 
+                                                <div class="input-group-append" data-target="#born-date" data-toggle="datetimepicker">
+                                                    <div class="input-group-text">cm</div>
                                                 </div>
-                                            @enderror
+                                                @error('inpHeight')
+                                                    <div id="inpHeightFeedback" class="invalid-feedback">
+                                                        {{$message}}
+                                                    </div>
+                                                @enderror
+                                            </div>
                                         </td>
                                     </tr>
                                     <tr>

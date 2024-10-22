@@ -43,7 +43,8 @@ class MedisController extends Controller
             'inpGender' => 'required|numeric|between:1,2',
             'inpBorn' => 'required|date_format:d/m/Y', 
             'inpWeight' => 'required|numeric', 
-            'inpHeight' => 'required|numeric', 
+            'inpHeight' => 'required|numeric',
+            'inpIllnessHistory' => 'string'
         ]);
         
         if($validator->fails()){ 
@@ -80,7 +81,8 @@ class MedisController extends Controller
             'weight' => $request->input('inpWeight'),
             'height' => $request->input('inpHeight'),
             'gender'=> $request->input('inpGender')==1?true:false,
-            'user_id' => $user->id
+            'user_id' => $user->id,
+            'illnessHistory' => $request->input('inpIllnessHistory')
         ]);
 
         if(!$pasien->save()){
