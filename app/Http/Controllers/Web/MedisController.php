@@ -59,7 +59,7 @@ class MedisController extends Controller
             'email' => $request->input('inpEmail'),
             'role_id' => RoleEnum::PASIEN,
             'email_verified_at' => now(),
-            'password' => config('igoniometer.user_default_password'), // password
+            'password' => Hash::make(config('igoniometer.user_default_password')), // password
             'remember_token' => Str::random(10),
         ]);
 
