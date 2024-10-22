@@ -38,6 +38,10 @@
                             <span class="h6">Data Profil</span>
                         </div>
                         <div class="card-tools">
+                            <a href="{{route('profile.password.edit')}}" class="btn btn-danger btn-sm">
+                                <i class="fas fa-edit"></i>
+                                Ganti Password
+                            </a>
                             <button type="submit" class="btn btn-info btn-sm">
                                 <i class="fas fa-save"></i>
                                 Simpan

@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\LoginController;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\VarDumper\VarDumper;
@@ -222,11 +223,47 @@ class GeneralUserController extends Controller
 
     // password edit page
     public function editMyPassword() {
-        
+        return view('profile.password.edit');
     }
 
     // password update
-    public function updateMyPassword() {
+    public function updateMyPassword(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            'newPassword' => 'required|string',
+            'confirmPassword' => 'required|same:newPassword',
+            'oldPassword' => 'required|string',
+        ]);
+
+        if($validator->fails()){
+            return redirect()
+            ->back()
+            ->withInput()
+            ->withErrors($validator->errors());
+        }
         
+        $user = $request->user();
+
+        if(!Hash::check($request->oldPassword, $user->password)){
+            return redirect()
+            ->back()
+            ->withErrors([
+                'messageError' => 'Password lama salah.'
+            ]); 
+        }
+        
+        $user->password = Hash::make($request->newPassword);
+
+        if(!$user->save()){ 
+            return redirect()
+            ->back()
+            ->withErrors([
+                'messageError' => 'Gagal mengupdate password.'
+            ]); 
+        }
+        
+        return redirect()
+            ->to(route('myProfile.edit'))
+            ->with('messageSuccess', 'Berhasil mengupdate password.');
     }
 }

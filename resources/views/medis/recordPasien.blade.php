@@ -92,7 +92,7 @@
 
                     <div class="card-body shadow">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12">
                                 <div class="d-flex flex-row m-2 p-1 shadow">
                                     <div class="p-1 flex-fill">
                                         <canvas class="chart" id="mpu-canvas" style=" height:0px; width:100%"></canvas>
@@ -121,7 +121,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12">
                                 <div class="d-flex flex-row m-2 p-1 shadow">
                                     <div class="p-1 flex-fill">
                                         <canvas class="chart" id="emg-canvas" style=" height:100%; width:80%"></canvas>

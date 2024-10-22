@@ -53,13 +53,13 @@ class DatabaseSeeder extends Seeder
         ->create();
 
         // pasien
-        Pasien::factory()
-        ->count(2) 
-        ->create();
+        // Pasien::factory()
+        // ->count(2) 
+        // ->create();
 
         // device
-        Device::factory()
-        ->count(2)
-        ->create();
+        // Device::factory()
+        // ->count(2)
+        // ->create();
     }
 }
