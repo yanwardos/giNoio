@@ -37,6 +37,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto font-weight-bold ">
+                        @auth
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{route('dashboard')}}">Beranda</a>
+                            </li> 
+                        @endauth
                         <li class="nav-item">
                             <a class="nav-link" href="#home">Home</a>
                         </li>

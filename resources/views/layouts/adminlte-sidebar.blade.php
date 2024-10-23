@@ -44,9 +44,8 @@
 
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
     <div class="wrapper" id="app">
-
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-light">
@@ -92,6 +91,13 @@
                         <div class="dropdown-divider"></div>
                         <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a> --}}
                     </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <span class="h6">
+                            {{ auth()->user()->name }}
+                        </span>
+                    </a> 
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
@@ -292,7 +298,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer main-footer-light">
-            <strong>Copyright &copy; 2024 <a href="#">IGoniometer</a>.</strong>
+            <strong>Copyright &copy; 2024 <a href="{{ url('') }}">IGoniometer</a>.</strong>
             {{-- All rights reserved. --}}
             <div class="float-right d-none d-sm-inline-block">
                 {{-- <b>Version</b> 3.2.0 --}}

@@ -27,91 +27,75 @@
         <div class="col-12 col-lg-10 col-xl-8 d-flex flex-column p-2">
             <div class="card bg-gray-light">
                 <div class="card-header">
-                    <div class="card-title"> 
+                    <div class="card-title">
                         <span class="h6">Data Profil</span>
                     </div>
                     <div class="card-tools">
-                        <a href="{{route('profile.edit')}}" class="btn btn-info btn-sm">
+                        <a href="{{ route('profile.edit') }}" class="btn btn-info btn-sm">
                             <i class="fas fa-edit"></i>
                             Edit
                         </a>
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="row"> 
+                    <div class="row">
                         <div class="col-8">
                             <table class="table table-borderless ">
                                 <tr>
                                     <th>Nama</th>
-                                    <td>{{$user->name}}</td>
+                                    <td>{{ $user->name }}</td>
                                 </tr>
                                 <tr>
                                     <th>Email</th>
-                                    <td>{{$user->email}}</td>
+                                    <td>{{ $user->email }}</td>
                                 </tr>
 
                                 @pasien
                                     <tr>
                                         <th>Jenis Kelamin</th>
-                                        <td>{{$user->getPasien()->gender()}}</td>
+                                        <td>{{ $user->getPasien()->gender() }}</td>
                                     </tr>
                                     <tr>
                                         <th>Usia</th>
-                                        <td>{{$user->getPasien()->age()}}</td>
+                                        <td>{{ $user->getPasien()->age() }}<strong> tahun</strong></td>
                                     </tr>
                                     <tr>
                                         <th>Berat Badan</th>
-                                        <td>{{$user->getPasien()->weight}}</td>
+                                        <td>{{ $user->getPasien()->weight }}<strong> kg</strong></td>
                                     </tr>
                                     <tr>
                                         <th>Tinggi Badan</th>
-                                        <td>{{$user->getPasien()->height}}</td>
-                                    </tr> 
-                                @endpasien 
-                            </table> 
+                                        <td>{{ $user->getPasien()->height }}<strong> cm</strong></td>
+                                    </tr>
+                                @endpasien
+                            </table>
                         </div>
                         <div class="col-4">
-                            <img class="img img-fluid" src="{{$user->getAvatar()}}" alt="">
+                            <img class="img img-fluid" src="{{ $user->getAvatar() }}" alt="">
                         </div>
-                        <hr> 
+                        <hr>
                     </div>
                 </div>
             </div>
         </div>
-        
+
         @pasien
-        <div class="col-12 col-lg-10 col-xl-8 d-flex flex-column p-2">
-            <div class="card bg-gray-light">
-                <div class="card-header">
-                    <div class="card-title"> 
-                        <span class="h6">Riwayat Penyakit</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12">
-                            <!-- TODO: RIWAYAT -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
             <div class="col-12 col-lg-10 col-xl-8 d-flex flex-column p-2">
                 <div class="card bg-gray-light">
                     <div class="card-header">
-                        <div class="card-title"> 
-                            <span class="h6">Riwayat Terapi</span>
+                        <div class="card-title">
+                            <span class="h6">Riwayat Penyakit</span>
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-12">
-                                <!-- TODO: RIWAYAT -->
+                                {{$user->getPasien()->illnessHistory}}
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
         @endpasien
     </div><!-- /.container-fluid -->
 @endsection

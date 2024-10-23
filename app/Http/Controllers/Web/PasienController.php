@@ -8,9 +8,12 @@ use Illuminate\Http\Request;
 class PasienController extends Controller
 {
     # TODO: patient dashboard
-    public function index()
+    public function index(Request $request)
     {
-        return view('pasien.dashboard');
+        $user = $request->user();
+        $pasien = $user->getPasien();
+        $monitoringRecords = $pasien->getMonitoringRecords();
+        return view('pasien.dashboard', compact('pasien', 'monitoringRecords'));
     }
 
     # TODO: my teraphy history
@@ -18,7 +21,8 @@ class PasienController extends Controller
     {
         $user = $request->user();
         $pasien = $user->getPasien();
-        return view('pasien.riwayatList', compact('pasien'));
+        $monitoringRecords = $pasien->getMonitoringRecords();
+        return view('pasien.riwayatList', compact('pasien', 'monitoringRecords'));
     }
 
     # TODO: halaman terapi pasien

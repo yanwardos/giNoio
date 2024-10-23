@@ -40,6 +40,16 @@ class Pasien extends Model
     }
 
     // riwayat
+    public function getMonitoringRecords(){
+        $records = MonitoringRecord::where(['pasienId' => $this->id])->get();
+        foreach ($records as $record) {
+            $record->data = json_decode($record->data);
+        }
+
+        return $records;
+    }
+
+
     public function getTotalTerapiSeconds(){
         return 400;
     }

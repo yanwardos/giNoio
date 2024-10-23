@@ -14,4 +14,5 @@ class MonitoringRecord extends Model
         'deviceId',
         'pasienId'
     ];
+ 
 }

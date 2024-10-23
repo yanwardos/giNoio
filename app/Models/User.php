@@ -79,11 +79,11 @@ class User extends Authenticatable
     }
 
     public function getAvatar(){
-        if(!isset($this->avatar)) return "https://via.placeholder.com/350x450";
-        if(is_null($this->avatar)) return "https://via.placeholder.com/350x450";
+        if(!isset($this->avatar)) return "https://placehold.co/400";
+        if(is_null($this->avatar)) return "https://placehold.co/400";
         $oldAvatarPath = env('PATH_USER_AVATAR').'/'.$this->avatar;
 
-        if(!File::exists($oldAvatarPath)) return "https://via.placeholder.com/350x450";
+        if(!File::exists($oldAvatarPath)) return "https://placehold.co/400";
 
         return url(env('PATH_USER_AVATAR').'/'.$this->avatar); 
     }

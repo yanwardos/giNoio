@@ -90,7 +90,7 @@
 
                     <div class="card-body shadow">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12">
                                 <div class="d-flex flex-row m-2 p-1 shadow">
                                     <div class="p-1 flex-fill">
                                         <canvas class="chart" id="mpu-canvas" style=" height:0px; width:100%"></canvas>
@@ -119,7 +119,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-12">
                                 <div class="d-flex flex-row m-2 p-1 shadow">
                                     <div class="p-1 flex-fill">
                                         <canvas class="chart" id="emg-canvas" style=" height:100%; width:80%"></canvas>
@@ -146,35 +146,41 @@
             <div class="col-12 col-lg-11 col-xl-10 p-2">
                 <div class="card bg-gray-light">
                     <div class="card-body shadow">
-                        <table id="tabelRiwayat" class="table table-bordered table-hover">
+                        <table id="tabelDataMonitoring" class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th class="col-1">No</th>
-                                    <th class="col-5">Waktu terapi</th>
-                                    <th class="col-2">Durasi</th>
-                                    <th class="col-2">Aksi</th>
-
+                                    <th class="col-4">Nilai MPU</th>
+                                    <th class="col-4">Nilai EMG</th>
+                                    <th class="col-3">Waktu Data</th> 
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="col-1">No</td> 
-                                    <td class="col-2">Waktu</td>
-                                    <td class="col-2">Durasi</td>
-                                    <td class="col-2">Aksi detail</td>
-                                </tr>
-                                <tr>
-                                    <td class="col-1">No</td> 
-                                    <td class="col-2">Waktu</td>
-                                    <td class="col-2">Durasi</td>
-                                    <td class="col-2">Aksi detail</td>
-                                </tr>
-                                <tr>
-                                    <td class="col-1">No</td> 
-                                    <td class="col-2">Waktu</td>
-                                    <td class="col-2">Durasi</td>
-                                    <td class="col-2">Aksi detail</td>
-                                </tr> 
+                                @php
+                                    $no = 1;
+                                @endphp
+                                @foreach ($monitoringRecords as $record) 
+                                    <tr>
+                                        <td>
+                                            {{$no++}}
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-info badge-pill py-1 px-2">
+                                                X: {{$record->data->x ?? '-'}}&deg; | Y: {{$record->data->y ?? '-'}}&deg; | Z: {{$record->data->z ?? '-'}}&deg; 
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="badge bg-info badge-pill py-1 px-2">
+                                                {{$record->data->emg ?? '-'}} volt
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <small>
+                                                {{$record->created_at ?? '-'}}
+                                            </small>
+                                        </td>
+                                    </tr>
+                                @endforeach 
                             </tbody>
                         </table>
                     </div>
@@ -194,7 +200,7 @@
     <script src="{{ asset('js/chartDriver.js') }}"></script> 
     <script>
         $(function() {
-            $('#tabelRiwayat').DataTable({
+            $('#tabelDataMonitoring').DataTable({
                 "paging": true,
                 "lengthChange": false,
                 "searching": true,
