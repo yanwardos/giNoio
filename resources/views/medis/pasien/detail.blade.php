@@ -91,23 +91,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-lg-10 col-xl-8 d-flex flex-column p-2">
-            <div class="card bg-gray-light">
-                <div class="card-header">
-                    <div class="card-title"> 
-                        <span class="h6">Riwayat Terapi</span>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12">
-                            <!-- TODO: RIWAYAT -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div> 
     </div><!-- /.container-fluid -->
     
     <div class="modal fade" id="modal-delete-pasien">
