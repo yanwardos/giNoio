@@ -2,6 +2,12 @@
 
 @section('styles')
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+    <style>
+        body {
+            background: rgb(255, 255, 255);
+            background: linear-gradient(0deg, rgba(255, 255, 255, 1) 50%, rgba(122, 196, 100, 1) 100%);
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -13,7 +19,8 @@
                     <div class="card p-3 card-login bg-light text-light shadow">
                         <div class="card-body px-4 py-3">
                             <a href="{{ route('landing') }} "
-                                class="text-decoration-none d-flex flex-column justify-content-center mb-2" style="color: black">
+                                class="text-decoration-none d-flex flex-column justify-content-center mb-2"
+                                style="color: black">
                                 <img class="img-fluid" style="height: 100px;" src="{{ asset('assets/img/brain.svg') }}"
                                     alt="Goniometer Logo">
                                 <strong class="text-center fw-bold h2 pt-2 pb-0">Goniometer</strong>
@@ -39,20 +46,21 @@
                                         @enderror
                                     </div>
                                 </div>
-                                  
+
                                 <div class="row mb-3">
                                     <label for="password"
                                         class="col-md-4 col-form-label text-start">{{ __('Password') }}</label>
 
-                                    <div class="col-12">  
+                                    <div class="col-12">
                                         <div class="input-group" id="passwordGroup">
                                             <input id="passwordInput" type="password"
-                                                class=" form-control @error('password') is-invalid @enderror" name="password"
-                                                required autocomplete="current-password">
+                                                class=" form-control @error('password') is-invalid @enderror"
+                                                name="password" required autocomplete="current-password">
 
                                             <div class="input-group-append">
                                                 <span class="input-group-text">
-                                                    <a href="#" style="text-decoration: none; color: black" id="passwordToggle">
+                                                    <a href="#" style="text-decoration: none; color: black"
+                                                        id="passwordToggle">
                                                         <i class="fas fa-eye-slash"></i>
                                                     </a>
                                                 </span>
@@ -65,7 +73,7 @@
                                             </span>
                                         @enderror
                                     </div>
-                                </div>  
+                                </div>
                                 <div class="row mb-0">
                                     <div class="col-12 d-flex flex-row justify-content-center">
                                         <button type="submit" class="btn btn-light bg-white fw-bold">
@@ -91,20 +99,22 @@
 
 
 @section('scripts')
-$(document).ready(function(){ 
-    $('#passwordToggle').on('click', (event)=>{
-        event.preventDefault(); 
-        if($('#passwordGroup input').attr("type") == "text"){
-            $('#passwordGroup input').attr('type', 'password');
-            $('#passwordGroup i').addClass( "fa-eye-slash" );
-            $('#passwordGroup i').removeClass( "fa-eye" );
-        }else if($('#passwordGroup input').attr("type") == "password"){
-            $('#passwordGroup input').attr('type', 'text');
-            $('#passwordGroup i').removeClass( "fa-eye-slash" );
-            $('#passwordGroup i').addClass( "fa-eye" );
-        }
+    <script>
+        $(document).ready(function() {
+            $('#passwordToggle').on('click', (event) => {
+                event.preventDefault();
+                if ($('#passwordGroup input').attr("type") == "text") {
+                    $('#passwordGroup input').attr('type', 'password');
+                    $('#passwordGroup i').addClass("fa-eye-slash");
+                    $('#passwordGroup i').removeClass("fa-eye");
+                } else if ($('#passwordGroup input').attr("type") == "password") {
+                    $('#passwordGroup input').attr('type', 'text');
+                    $('#passwordGroup i').removeClass("fa-eye-slash");
+                    $('#passwordGroup i').addClass("fa-eye");
+                }
 
-    })
-})
-
+            })
+        })
+    </script>
 @endsection
+ 

@@ -41,7 +41,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }} ">
 
     @yield('styles')
-
+ 
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -365,5 +365,5 @@
         });
     </script>
 </body>
-
+ 
 </html>

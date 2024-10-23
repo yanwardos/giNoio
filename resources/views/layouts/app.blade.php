@@ -39,9 +39,7 @@
     <!-- Bootstrap 4 -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script> 
     <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
-    <script>
-        @yield('scripts')
-    </script>
+    @yield('scripts')
 </body>
 
 </html>
