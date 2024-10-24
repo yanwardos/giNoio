@@ -43,7 +43,7 @@
                     </div>
                     <div class="card-body">
                         <div class="row"> 
-                            <div class="col-8">
+                            <div class="col-12 col-lg-10">
                                 <table class="table table-borderless ">
                                     <tr>
                                         <th><label for="inpName">Nama</label></th>
