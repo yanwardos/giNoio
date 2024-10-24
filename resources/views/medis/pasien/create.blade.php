@@ -26,7 +26,7 @@
 @section('content-main')
 
     <div class="container-fluid">
-        <div class="col-12 col-lg-10 col-xl-8 d-flex flex-column p-2">
+        <div class="col-12 col-lg-10 d-flex flex-column p-2">
             <form action="{{route('medis.pasien.store')}}" method="POST" novalidate>
                 @csrf
                 <div class="card bg-gray-light">
