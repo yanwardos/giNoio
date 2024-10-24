@@ -74,11 +74,11 @@
                         </div>
                         <div class="card-body d-flex flex-column align-items-center">
                             <img class="img img-fluid mb-2" src="{{asset('assets/img/biomedis-itera-logo.png')}}" alt="Logo Biomedis ITERA" style="height: 200px;">
-                            <p>
+                            <p class="text-justify">
                                 Program Studi Teknik Biomedis (PS BM) merupakan salah satu program studi di Institut Teknologi Sumatera (ITERA) yang resmi dibuka pada tahun 2019 dengan diterbitkannya SK Menteri Riset, Teknologi, dan Pendidikan Tinggi Nomor 694/KPT/I/2019 tentang izin pembukaan Program Studi Teknik Biomedis program sarjana pada Institut Teknologi Sumatera.
                                 Pendirian PS BM akan mendukung visi dan misi ITERA dalam memenuhi ketersediaan sumber daya manusia di bidang Teknik Biomedis khususnya di wilayah Sumatera.
                             </p>
-                            <p>
+                            <p class="text-justify">
                                 Program Studi Teknik Biomedis ITERA memiliki visi keilmuan untuk berkontribusi pada pengembangan sumber daya manusia serta inovasi teknologi biomedis yang unggul di tingkat nasional, regional, dan internasional dengan keunikan program studi yang meliputi bidang peminatan Instrumentasi dan Pengolahan Citra Biomedis serta peminatan Biomaterial dan Rekayasa Jaringan.
                                 Dari sisi sistem atau bahan yang menjadi fokus kajian, baik dalam kelas maupun tugas akhir, kajian akan berfokus pada sistem, perangkat, bahan, maupun kondisi infrastruktur
                             </p>
@@ -89,12 +89,12 @@
                     <article class="card bg-gray-light">
                         <div class="card-header bg-success">
                             <div class="card-title">
-                                <span class="h6">Informasi</span>
+                                <span class="h6">IGoniometer</span>
                             </div> 
                         </div>
                         <div class="card-body d-flex flex-column align-items-center">
                             <img class="img img-fluid mb-2" src="{{asset('assets/img/igoniometer-device.png')}}" alt="Alat IGoniometer" style="height: 200px;">
-                            <p>
+                            <p class="text-justify">
                                 IGoniometer merupakan goniometer digital yang dirancang untuk mengukur sudut gerakan sendi sekaligus memantau aktivitas listrik otot.
                                 Dengan teknologi digital, alat ini menawarkan pembacaan yang lebih mudah dan cepat dibandingkan dengan goniometer analog.
                                 Biasanya digunakan dalam berbagai bidang seperti kedokteran.

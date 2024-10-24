@@ -32,7 +32,7 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <p>
+                            <p class="text-justify">
                                 IGoniometer merupakan goniometer digital yang dirancang untuk mengukur sudut gerakan sendi
                                 sekaligus memantau aktivitas listrik otot. Dengan teknologi digital, alat ini menawarkan
                                 pembacaan yang lebih mudah dan cepat dibandingkan dengan goniometer analog. Biasanya
