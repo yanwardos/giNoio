@@ -6,6 +6,7 @@ use App\Enum\RoleEnum;
 use App\Models\Admin;
 use App\Models\Device;
 use App\Models\Medis;
+use App\Models\MonitoringRecord;
 use App\Models\Pasien;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -53,13 +54,20 @@ class DatabaseSeeder extends Seeder
         ->create();
 
         // pasien
-        // Pasien::factory()
-        // ->count(2)
-        // ->create();
+        Pasien::factory()
+        ->count(2)
+        ->create();
 
         // device
-        // Device::factory()
-        // ->count(2)
-        // ->create();
+        Device::factory()
+        ->count(2)
+        ->create();
+
+        // data
+        MonitoringRecord::factory()->count(500)->create([
+            'deviceId' => Device::first()->id,
+            'pasienId' => Pasien::first()->id
+        ]);
+
     }
 }

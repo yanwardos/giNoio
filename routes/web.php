@@ -83,7 +83,7 @@ Route::middleware(['auth', 'role:medis'])->prefix('medis')->group(function () {
     // view
     Route::get('/pasiens', [MedisController::class, 'pasienList'])->name('medis.pasien.list');
     Route::get('/pasien/{pasien}/detail', [MedisController::class, 'showPasien'])->name('medis.pasien.show');
-    
+
     Route::get('/pasien/create', [MedisController::class, 'pasienCreate'])->name('medis.pasien.create');
     Route::post('/pasien/create', [MedisController::class, 'pasienStore'])->name('medis.pasien.store');
 
@@ -92,18 +92,19 @@ Route::middleware(['auth', 'role:medis'])->prefix('medis')->group(function () {
     Route::post('/pasien/{pasien}/delete', [MedisController::class, 'pasienDelete'])->name('medis.pasien.delete');
     Route::post('/pasien/{pasien}/passwordReset', [MedisController::class, 'resetPassword'])->name('medis.pasien.password.reset');
 
-    Route::get('/pasiens/records', [MedisController::class, 'recordsAllPasiens'])->name('medis.records.pasien.all'); 
-    Route::get('/pasien/{pasien}/records/live', [MedisController::class, 'recordsPasien'])->name('medis.records.pasien');
+    Route::get('/pasiens/records', [MedisController::class, 'recordsAllPasiens'])->name('medis.records.pasien.all');
+    Route::get('/pasien/{pasien}/records/live', [MedisController::class, 'recordsPasien'])->name('medis.records.pasien.live');
+    Route::get('/pasien/{pasien}/records', [MedisController::class, 'recordsPasien'])->name('medis.records.pasien');
 
-    Route::get('/devices', [MedisController::class, 'devices'])->name('medis.devices'); 
-    Route::get('/device/{device}/detail', [MedisController::class, 'deviceDetail'])->name('medis.device'); 
-    
-    Route::get('/device/register', [MedisController::class, 'deviceRegister'])->name('medis.deviceRegister'); 
-    Route::post('/device/create', [MedisController::class, 'deviceCreate'])->name('medis.deviceCreate'); 
-    
+    Route::get('/devices', [MedisController::class, 'devices'])->name('medis.devices');
+    Route::get('/device/{device}/detail', [MedisController::class, 'deviceDetail'])->name('medis.device');
+
+    Route::get('/device/register', [MedisController::class, 'deviceRegister'])->name('medis.deviceRegister');
+    Route::post('/device/create', [MedisController::class, 'deviceCreate'])->name('medis.deviceCreate');
+
     Route::get('/pasien/{pasien}/assign-device', [MedisController::class, 'assignDeviceToPasien'])->name('medis.pasien.assignDevice');
     Route::post('/pasien/assign-device', [MedisController::class, 'assignDeviceToPasienStore'])->name('medis.pasien.assignDevice.store');
-    Route::post('/pasien/unassign-device', [MedisController::class, 'unassignDeviceFromPasienStore'])->name('medis.pasien.unassignDevice.store'); 
+    Route::post('/pasien/unassign-device', [MedisController::class, 'unassignDeviceFromPasienStore'])->name('medis.pasien.unassignDevice.store');
 
 });
 
@@ -128,7 +129,7 @@ Route::get('vars', function () {
     foreach (Pasien::get() as $pasien) {
         dump($pasien->user->attributesToArray());
     }
-    
+
     dump("DEVICES");
     foreach (Device::get() as $device) {
         dump($device->attributesToArray());

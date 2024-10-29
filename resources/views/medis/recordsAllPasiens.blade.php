@@ -41,7 +41,7 @@
                             @php
                                 $no = 1;
                             @endphp
-                            @foreach ($pasiens as $pasien) 
+                            @foreach ($pasiens as $pasien)
                                 <tr>
                                     <td class="col-1">{{$no++}}</td>
                                     <td class="col-6">{{$pasien->user->name}}</td>
@@ -54,14 +54,14 @@
 
                                         <small></small>
                                     </td>
-                                    <td class="col-2"> 
+                                    <td class="col-2">
                                         <a href="{{route('medis.records.pasien', $pasien)}}" class="btn btn-block btn-secondary btn-xs">
                                             <i class="fas fa-info"></i>
                                             Detail
-                                        </a> 
+                                        </a>
                                     </td>
                                 </tr>
-                            @endforeach 
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -88,7 +88,7 @@
                 "autoWidth": false,
                 "responsive": true,
             });
-            
+
             let nodes = $('.nodeStateBadge');
 
             if(nodes){
@@ -110,7 +110,7 @@
                     });
                 })
             }
-            
+
         })
     </script>
 @endsection

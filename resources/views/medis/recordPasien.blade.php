@@ -167,7 +167,7 @@
                                 @foreach ($records as $record)
                                     <tr>
                                         <td>
-                                            {{$no}}
+                                            {{$no++}}
                                         </td>
                                         <td>
                                             <span class="badge bg-info badge-pill py-1 px-2">
