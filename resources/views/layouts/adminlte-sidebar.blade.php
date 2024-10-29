@@ -11,7 +11,8 @@
     <title>
         @yield('page-title') - {{ config('app.name', 'Laravel') }}
     </title>
- 
+    <link rel="icon" type="image/png" href="{{asset('assets/img/brain.svg')}}"/>
+
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -41,7 +42,7 @@
     <link rel="stylesheet" href="{{ asset('plugins/summernote/summernote-bs4.min.css') }} ">
 
     @yield('styles')
- 
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
@@ -97,7 +98,7 @@
                         <span class="h6">
                             {{ auth()->user()->name }}
                         </span>
-                    </a> 
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-widget="fullscreen" href="#" role="button">
@@ -140,8 +141,8 @@
                         </div>
                     </div>
 
-                @endauth 
- 
+                @endauth
+
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
@@ -177,14 +178,14 @@
                             </li>
                             <li class="nav-header">MONITORING</li>
                             <li class="nav-item">
-                                <a class="nav-link {{ 
-                                        Route::is('medis.records.*') ? 'active' : '' 
+                                <a class="nav-link {{
+                                        Route::is('medis.records.*') ? 'active' : ''
                                     }}"
                                     href="{{ route('medis.records.pasien.all') }}">
                                     <i class="fas fa-history nav-icon"></i>
                                     <p>Data Pasien</p>
                                 </a>
-                            </li> 
+                            </li>
                             <li class="nav-header">PERANGKAT</li>
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::is('medis.devices')||Route::is('medis.device') ? 'active' : '' }}"
@@ -192,16 +193,16 @@
                                     <i class="fas fa-tools nav-icon"></i>
                                     <p>Data Perangkat</p>
                                 </a>
-                            </li> 
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::is('medis.deviceRegister') ? 'active' : '' }}"
                                     href="{{ route('medis.deviceRegister') }}">
                                     <i class="fas fa-plus nav-icon"></i>
                                     <p>Registrasi</p>
                                 </a>
-                            </li> 
+                            </li>
                         @endmedis
-                        
+
                         @pasien
                             <li class="nav-item">
                                 <a href="{{ route('pasien.dashboard') }}"
@@ -225,9 +226,9 @@
                                     <i class="fas fa-history nav-icon"></i>
                                     <p>Riwayat terapi</p>
                                 </a>
-                            </li> 
+                            </li>
                         @endpasien
- 
+
                         <li class="nav-header">SISTEM</li>
                             <li class="nav-item">
                                 <a class="nav-link {{Route::is('profile*')? 'active' : ''}}"
@@ -238,7 +239,7 @@
                                     </p>
                                 </a>
                             </li>
-                        @auth 
+                        @auth
                             <li class="nav-item">
                                 <a class="nav-link"
                                 href="{{ route('logout') }}"
@@ -269,7 +270,7 @@
             <div class="content-header">
                 @yield('content-header')
                 <div class="container-fluid">
-                    <div class="row mb-2"> 
+                    <div class="row mb-2">
                         @error('messageError')
                             <div class="col-12 mt-3">
                                 <div class="alert alert-danger" role="alert">
@@ -282,10 +283,10 @@
                                 <div class="alert alert-success" role="alert">
                                     {{Session::get('messageSuccess')}}
                                 </div>
-                            </div> 
+                            </div>
                         @endif
                     </div><!-- /.row -->
-                    
+
                 </div><!-- /.container-fluid -->
             </div>
             <!-- /.content-header -->
@@ -315,7 +316,7 @@
     <script>
         $.widget.bridge('uibutton', $.ui.button)
     </script>
-    
+
     <!-- Bootstrap 4 -->
     <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
@@ -344,7 +345,7 @@
     <!-- AdminLTE App -->
     <script src="{{ asset('js/adminlte.js') }}"></script>
 
-    
+
     @yield('scripts')
     {{--
     <!-- AdminLTE for demo purposes -->
@@ -365,5 +366,5 @@
         });
     </script>
 </body>
- 
+
 </html>

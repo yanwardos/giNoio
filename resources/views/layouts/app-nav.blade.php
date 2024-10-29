@@ -9,7 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-
+    <link rel="icon" type="image/png" href="{{asset('assets/img/brain.svg')}}"/>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -34,13 +34,13 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent"> 
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto font-weight-bold ">
                         @auth
                             <li class="nav-item">
                                 <a class="nav-link" href="{{route('dashboard')}}">Beranda</a>
-                            </li> 
+                            </li>
                         @endauth
                         <li class="nav-item">
                             <a class="nav-link" href="#home">Home</a>
@@ -82,7 +82,7 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li> 
+                            </li>
                         @endguest
                     </ul>
                 </div>
@@ -105,7 +105,7 @@
         $.widget.bridge('uibutton', $.ui.button)
     </script>
     <!-- Bootstrap 4 -->
-    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script> 
+    <script src="{{ asset('plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Scripts -->
     <script src="{{ asset('js/adminlte.min.js') }}" defer></script>
