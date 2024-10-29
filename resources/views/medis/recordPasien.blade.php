@@ -66,7 +66,7 @@
                                 Hapus Perangkat
                             </button>
                         </div>
-                        <div class="d-flex flex-row"> 
+                        <div class="d-flex flex-row">
                             <div class="small-box bg-info mr-1 small-box-status">
                                 <div class="inner">
                                     <h4></h4>
@@ -83,7 +83,7 @@
                         <h3 class="card-title">
                             Data Live
                         </h3>
-                        <div class="card-tools"> 
+                        <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                 <i class="fas fa-minus"></i>
                             </button>
@@ -98,7 +98,7 @@
                                         <canvas class="chart" id="mpu-canvas" style=" height:0px; width:100%"></canvas>
                                     </div>
                                     <div class="p-1">
-                                        <div class="d-flex flex-column align-items-center justify-content-center m-2"> 
+                                        <div class="d-flex flex-column align-items-center justify-content-center m-2">
                                             <div class="d-flex flex-column justify-content-start align-items-center m-2">
                                                 <input type="text" class="knob knob-x" id="knob-x" data-readonly="true"
                                                     data-width="60" data-height="60" value="56" data-fgColor="#39cc39"
@@ -125,7 +125,7 @@
                                 <div class="d-flex flex-row m-2 p-1 shadow">
                                     <div class="p-1 flex-fill">
                                         <canvas class="chart" id="emg-canvas" style=" height:100%; width:80%"></canvas>
-                                    </div> 
+                                    </div>
                                     <div class="p-1">
                                         <div class="d-flex flex-column justify-content-center align-items-center m-2">
                                             <div class="progress vertical active">
@@ -137,7 +137,7 @@
                                             <span class="badge text-white mt-2" style="background-color: #cc3939">V EMG</small>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -157,26 +157,26 @@
                                     <th class="col-1">No</th>
                                     <th class="col-4">Nilai MPU</th>
                                     <th class="col-4">Nilai EMG</th>
-                                    <th class="col-3">Waktu Data</th> 
+                                    <th class="col-3">Waktu Data</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @php
                                     $no = 1;
                                 @endphp
-                                @foreach ($records as $record) 
+                                @foreach ($records as $record)
                                     <tr>
                                         <td>
                                             {{$no}}
                                         </td>
                                         <td>
                                             <span class="badge bg-info badge-pill py-1 px-2">
-                                                X: {{$record->data->x ?? '-'}} | Y: {{$record->data->y ?? '-'}} | Z: {{$record->data->z ?? '-'}}
+                                                X: {{$record->data->x  ?? '-'}} &deg; | Y: {{$record->data->y ?? '-'}} &deg; | Z: {{$record->data->z ?? '-'}} &deg;
                                             </span>
                                         </td>
                                         <td>
                                             <span class="badge bg-info badge-pill py-1 px-2">
-                                                {{$record->data->emg ?? '-'}}
+                                                {{$record->data->emg ?? '-'}} v
                                             </span>
                                         </td>
                                         <td>
@@ -185,7 +185,7 @@
                                             </small>
                                         </td>
                                     </tr>
-                                @endforeach 
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -216,14 +216,14 @@
             });
             @if ($pasien->device)
                 let nodeSerial = '{{ $pasien->device->serialNumber }}';
-    
+
                 let mqtNodeMessageHandler = (message) => {
                     let payload = JSON.parse(message);
                     addDataMPU(payload);
                     addDataEMG(payload);
                 }
-    
-                if (window._mqclient) { 
+
+                if (window._mqclient) {
                     new DeviceNode({
                         mqttClient: window._mqclient,
                         nodeSerial: nodeSerial,
@@ -240,19 +240,19 @@
                         }
                     });
                 }
-    
+
                 /* jQueryKnob */
                 $('.knob').knob({
                     'min': 0,
                     'max': 360
                 })
-    
+
                 var isUnassigning = false;
                 $('.btn-unassign-device').click((event) => {
                     if (isUnassigning) return;
                     isUnassigning = true;
                     var pasienId = $(event.target).attr('pasien-id');
-    
+
                     $.ajax({
                         url: "{{ route('medis.pasien.unassignDevice.store') }}",
                         method: 'POST',
@@ -270,6 +270,6 @@
                 })
             @endif
         })
-        
+
     </script>
 @endsection

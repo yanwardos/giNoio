@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
                 ]
             ]
         );
-        
+
         // admin
         Admin::factory()
         ->count(1)
@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder
 
         // pasien
         // Pasien::factory()
-        // ->count(2) 
+        // ->count(2)
         // ->create();
 
         // device
