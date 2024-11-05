@@ -179,11 +179,20 @@
                             <li class="nav-header">MONITORING</li>
                             <li class="nav-item">
                                 <a class="nav-link {{
-                                        Route::is('medis.records.*') ? 'active' : ''
+                                        Route::is('medis.monitoring.*') ? 'active' : ''
                                     }}"
-                                    href="{{ route('medis.records.pasien.all') }}">
+                                    href="{{ route('medis.monitoring.index') }}">
                                     <i class="fas fa-history nav-icon"></i>
-                                    <p>Data Pasien</p>
+                                    <p>Live Data</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link {{
+                                        Route::is('medis.report.*') ? 'active' : ''
+                                    }}"
+                                    href="{{ route('medis.report.index') }}">
+                                    <i class="fas fa-history nav-icon"></i>
+                                    <p>Laporan Data</p>
                                 </a>
                             </li>
                             <li class="nav-header">PERANGKAT</li>

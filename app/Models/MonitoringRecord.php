@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class MonitoringRecord extends Model
 {
     use HasFactory;
-    
+
     protected $fillable = [
         'data',
         'deviceId',
         'pasienId'
     ];
- 
+
 }

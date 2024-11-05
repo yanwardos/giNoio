@@ -28,7 +28,7 @@
 @section('content-main')
     <div class="container-fluid">
         <div class="col-12 col-lg-11 col-xl-10 d-flex flex-column p-2">
-            <div class="card bg-gray-light"> 
+            <div class="card bg-gray-light">
                 <div class="card-header">
                     <h3 class="card-title">
                         Registrasi
@@ -50,20 +50,20 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-11 col-xl-10"> 
+        <div class="col-12 col-lg-11 col-xl-10">
             <div class="card bg-gray-light">
                 <div class="card-header border-0">
                     <h3 class="card-title">
                         Pasien
                     </h3>
                 </div>
-                <div class="card-body shadow"> 
+                <div class="card-body shadow">
                     @if ($device->pasien)
                         <table class="table table-responsive table-borderless table-hover">
                             <tr>
                                 <th>Nama</th>
                                 <td>{{$device->pasien->user->name}}</td>
-                            </tr> 
+                            </tr>
                         </table>
                         <br>
                         <button device-id="{{$device->id}}" pasien-id="{{$device->pasien->id}}" class="btn-unassign-pasien btn-assign-pasien btn btn-sm btn-danger">
@@ -71,29 +71,32 @@
                         </button>
                     @else
                         <span class="badge badge-warning p-1">
-                            Perangkat ini belum didaftarkan ke pasien.
-                        </span> 
-                    @endif 
+                            Perangkat ini belum dipasangkan ke pasien.
+                        </span>
+                        <a class="btn btn-sm btn-primary" href="#">
+                            Pasangkan pasien
+                        </a>
+                    @endif
                 </div>
             </div>
-        </div> 
-        <div class="col-12 col-lg-11 col-xl-10"> 
+        </div>
+        <div class="col-12 col-lg-11 col-xl-10">
             <div class="card bg-gray-light">
                 <div class="card-header border-0">
                     <h3 class="card-title">
                         Log dan Status
                     </h3>
                 </div>
-                <div class="card-body shadow d-flex flex-column"> 
+                <div class="card-body shadow d-flex flex-column">
                     <div class="row">
                         <div class="col-2 col-lg-2 small-box bg-info mr-1 small-box-status">
                             <div class="inner">
                                 <h4 class="small-box-status-text">
                                     Offline
-                                </h4> 
+                                </h4>
                                 <p>Status</p>
-                            </div>  
-                        </div> 
+                            </div>
+                        </div>
                     </div>
                     <div class="">
                         <table class="table table-sm table-secondary font-weight-light">
@@ -117,18 +120,18 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
     </div><!-- /.container-fluid -->
 @endsection
 
-@section('styles') 
+@section('styles')
 @endsection
 
-@section('scripts') 
+@section('scripts')
 <x-mqtt-service-js />
 <script>
-    
-    if (window._mqclient) { 
+
+    if (window._mqclient) {
         let nodeSerial = '{{ $device->serialNumber }}';
         new DeviceNode({
             mqttClient: window._mqclient,

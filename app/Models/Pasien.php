@@ -12,13 +12,13 @@ class Pasien extends Model
         'born',
         'weight',
         'height',
-        'gender', 
+        'gender',
         'user_id',
         'illnessHistory'
     ];
 
     use HasFactory;
- 
+
     public function user() {
         return $this->belongsTo(User::class);
     }
@@ -47,6 +47,11 @@ class Pasien extends Model
         }
 
         return $records;
+    }
+
+    public function getMonitoringRecordDates()
+    {
+        return MonitoringRecord::where(['pasienId' => $this->id])->selectRaw('DATE(created_at) as date, COUNT(*) as count')->groupBy('date')->orderBy('date', 'asc')->get();
     }
 
 

@@ -23,7 +23,7 @@
 @endsection
 
 @section('content-main')
-    <div class="container-fluid"> 
+    <div class="container-fluid">
         <div class="col-12 col-lg-11 col-xl-10 d-flex flex-column p-2">
             <div class="card bg-gray-light">
                 <div class="card-header">
@@ -67,7 +67,7 @@
     </div><!-- /.container-fluid -->
 @endsection
 
-@section('styles') 
+@section('styles')
 @endsection
 
 @section('scripts')
@@ -79,7 +79,7 @@
         isAssigning = true;
         var pasienId = $(event.target).attr('pasien-id');
         var deviceId = $(event.target).attr('device-id');
-        
+
         $.ajax({
             url: "{{route('medis.pasien.assignDevice.store')}}",
             method: 'POST',
@@ -89,7 +89,7 @@
             },
             success: (response)=>{
                 isAssigning = false;
-                window.location.replace("{{route('medis.records.pasien', $pasien->id)}}");
+                window.location.replace("{{route('medis.records.pasien.live', $pasien->id)}}");
             },
             error: (jqXHR, textStatus, errorThrown)=>{
                 isAssigning = false;

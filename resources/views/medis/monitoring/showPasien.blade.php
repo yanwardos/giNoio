@@ -1,14 +1,14 @@
 @extends('layouts.adminlte-sidebar')
 
 @section('page-title')
-    Monitoring
+    Live Data {{$pasien->user->name}}
 @endsection
 
 @section('content-header')
     <div class="container-fluid">
         <div class="row mb-2">
             <div class="col-sm-6">
-                <h1 class="m-0">Monitoring {{ $pasien->user->name }}</h1>
+                <h1 class="m-0">Live Data {{ $pasien->user->name }}</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -16,7 +16,10 @@
                         <a href="{{ route('medis.dashboard') }}">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active">
-                        <a href="{{ route('medis.records.pasien.all') }}">Data Monitoring</a>
+                        <a href="{{ route('medis.monitoring.index') }}">Live Data</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        {{$pasien->user->name}}
                     </li>
                 </ol>
             </div><!-- /.col -->
@@ -143,54 +146,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-lg-11 col-xl-10">
-                <div class="card bg-gray-light">
-                    <div class="card-header border-0">
-                        <h3 class="card-title">
-                            Data Historis
-                        </h3>
-                    </div>
-                    <div class="card-body shadow">
-                        <table id="tabelDataMonitoring" class="table table-bordered table-hover">
-                            <thead>
-                                <tr>
-                                    <th class="col-1">No</th>
-                                    <th class="col-4">Nilai MPU</th>
-                                    <th class="col-4">Nilai EMG</th>
-                                    <th class="col-3">Waktu Data</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @php
-                                    $no = 1;
-                                @endphp
-                                @foreach ($records as $record)
-                                    <tr>
-                                        <td>
-                                            {{$no++}}
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-info badge-pill py-1 px-2">
-                                                X: {{$record->data->x  ?? '-'}} &deg; | Y: {{$record->data->y ?? '-'}} &deg; | Z: {{$record->data->z ?? '-'}} &deg;
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <span class="badge bg-info badge-pill py-1 px-2">
-                                                {{$record->data->emg ?? '-'}} v
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <small>
-                                                {{$record->created_at ?? '-'}}
-                                            </small>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
         @endif
     </div><!-- /.container-fluid -->
 @endsection
@@ -261,7 +216,7 @@
                         },
                         success: (response) => {
                             isUnassigning = false;
-                            window.location.replace("{{ route('medis.records.pasien', $pasien->id) }}");
+                            window.location.replace("{{ route('medis.monitoring.index', $pasien->id) }}");
                         },
                         error: (jqXHR, textStatus, errorThrown) => {
                             isUnassigning = false;
