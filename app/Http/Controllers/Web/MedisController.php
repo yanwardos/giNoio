@@ -336,6 +336,11 @@ class MedisController extends Controller
         return view('medis.pasien.assignDevice', compact('pasien', 'devices'));
     }
 
+    public function deviceAssignPasien(Device $device){
+        $pasiens = Pasien::all();
+        return view('medis.device.assignPasien', compact('pasiens', 'device'));
+    }
+
 
     // APIS
     public function pasienAssignDeviceStore(Request $request){

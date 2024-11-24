@@ -105,12 +105,11 @@ Route::middleware(['auth', 'role:medis'])->prefix('medis')->group(function () {
     Route::post('/device/create', [MedisController::class, 'deviceCreate'])->name('medis.deviceCreate');
 
     Route::get('/pasien/{pasien}/assign-device', [MedisController::class, 'pasienAssignDevice'])->name('medis.pasien.assignDevice');
+    Route::get('/device/{device}/assign-pasien', [MedisController::class, 'deviceAssignPasien'])->name('medis.device.assignPasien');
+    
     Route::post('/pasien/assign-device', [MedisController::class, 'pasienAssignDeviceStore'])->name('medis.pasien.assignDevice.store');
     Route::post('/pasien/unassign-device', [MedisController::class, 'pasienUnassignDeviceStore'])->name('medis.pasien.unassignDevice.store');
-
-    Route::get('/device/{device}/assign-pasien', [MedisController::class, 'assignPasienToDevice'])->name('medis.device.assignPasien');
-    Route::post('/device/{device}/assign-pasien', [MedisController::class, 'assignPasienToDeviceStore'])->name('medis.device.assignPasien.store');
-    Route::post('/device/{device}/unassign-pasien', [MedisController::class, 'unAssignPasienToDeviceStore'])->name('medis.device.unassignDevice.store');
+    
 });
 
 

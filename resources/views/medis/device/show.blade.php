@@ -73,7 +73,8 @@
                         <span class="badge badge-warning p-1">
                             Perangkat ini belum dipasangkan ke pasien.
                         </span>
-                        <a class="btn btn-sm btn-primary" href="#">
+                        <br>
+                        <a class="btn btn-sm btn-primary mt-1" href="{{route('medis.device.assignPasien', $device)}}">
                             Pasangkan pasien
                         </a>
                     @endif
